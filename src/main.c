@@ -4,11 +4,16 @@
 #include "device/frameBuffer.h"
 #include "device/touchScreen.h"
 #include "painter.h"
+#include "accountInfo.h"
+
 
 #include <stdlib.h>
+accountInfo_t* account_list_head;
 
 int main(void)
 {
+    account_list_head = request_account_node_direct();
+
     struct loginPage* login_page;
 
     enum PAGE cur_page = LOGIN_PAGE;

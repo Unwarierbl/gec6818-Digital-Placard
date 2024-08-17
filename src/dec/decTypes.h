@@ -2,6 +2,9 @@
 #define DEC_TYPES_H
 
 #include "list.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -52,6 +55,7 @@ enum PAGE
 
     NO_PAGE,
     LOGIN_PAGE,
+    DESKTOP_PAGE,
 
 };
 

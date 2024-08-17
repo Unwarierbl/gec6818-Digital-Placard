@@ -86,6 +86,7 @@
     <RemoteLdToolExe>/usr/local/arm/arm-2009q3/bin/arm-none-linux-gnueabi-g++</RemoteLdToolExe>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="src\def\accountInfo.c" />
     <ClCompile Include="src\def\device\frameBuffer.c" />
     <ClCompile Include="src\def\device\touchScreen.c" />
     <ClCompile Include="src\def\module\blankButton.c" />
@@ -102,6 +103,7 @@
     <ClInclude Include="include\jmorecfg.h" />
     <ClInclude Include="include\jpeglib.h" />
     <ClInclude Include="include\list.h" />
+    <ClInclude Include="src\dec\accountInfo.h" />
     <ClInclude Include="src\dec\decTypes.h" />
     <ClInclude Include="src\dec\device\frameBuffer.h" />
     <ClInclude Include="src\dec\device\touchScreen.h" />

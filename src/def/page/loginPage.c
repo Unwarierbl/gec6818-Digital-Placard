@@ -9,6 +9,8 @@
 #include "module/bmpButton.h"
 #include "module/blankButton.h"
 
+#include "accountInfo.h"
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,16 +20,20 @@
 #include <time.h>
 #include <sys/timeb.h>
 
+extern accountInfo_t* account_list_head;
+
 static int cur_input_focus;
 
 static int press_number;
-
 static int account_numbs;
 static int password_numbs;
+static int cur_loop_numb;
+
+static char store_account_str[128];
+static char store_password_str[128];
 
 static enum PAGE* store_page_order_addr;
 
-static int cur_loop_numb;
 
 struct loginPage* request_loginPage_direct()
 {
@@ -47,6 +53,9 @@ void init_loginPage(struct loginPage* page)
 
     account_numbs  = 0;
     password_numbs = 0;
+
+    memset(store_account_str, 0, sizeof(store_account_str));
+    memset(store_password_str, 0, sizeof(store_password_str));
 
     page->bg_jpeg_picture = request_jpegPic_direct();
     jpegPic_set_pic_path(page->bg_jpeg_picture, "res/bg_1.jpg");
@@ -75,10 +84,10 @@ void init_loginPage(struct loginPage* page)
     bmpButton_set_press_pic_path(page->login_button, "res/button/login_2.bmp");
     bmpButton_load_pic(page->login_button);
 
-    page->regist_button                = request_bmpButton_direct();
-    page->regist_button->center_cord.x = 150;
-    page->regist_button->center_cord.y = 180;
-    // page->login_button->handle_release = loginButton_action;
+    page->regist_button                 = request_bmpButton_direct();
+    page->regist_button->center_cord.x  = 150;
+    page->regist_button->center_cord.y  = 180;
+    page->regist_button->handle_release = registButton_action;
     bmpButton_set_release_pic_path(page->regist_button, "res/button/regist_1.bmp");
     bmpButton_set_press_pic_path(page->regist_button, "res/button/regist_2.bmp");
     bmpButton_load_pic(page->regist_button);
@@ -205,8 +214,61 @@ void inputBox_password_action()
 
 void loginButton_action()
 {
-    *store_page_order_addr = NO_PAGE;
+    accountInfo_t* match_account =
+        find_match_account_node(account_list_head, store_account_str, store_password_str);
+    if (match_account == account_list_head) {
+        painter_clear_range(-65 - 25, -200 - 25, 50 * 5, 50 * 2);
+        painter_draw_str(-65, -200, 50, "登录失败!");
+        // frameBuffer_display_frame();
+
+        memset(store_account_str, 0, sizeof(store_account_str));
+        memset(store_password_str, 0, sizeof(store_password_str));
+
+        account_numbs = 0;
+        painter_draw_rectangle(-75, -100, 250, 50, White);
+        password_numbs = 0;
+        painter_draw_rectangle(-75, -25, 250, 50, White);
+    }
+    else {
+        painter_clear_range(-65 - 25, -200 - 25, 50 * 5, 50 * 2);
+        painter_draw_str(-65, -200, 50, "登录成功!");
+        frameBuffer_display_frame();
+
+        memset(store_account_str, 0, sizeof(store_account_str));
+        memset(store_password_str, 0, sizeof(store_password_str));
+
+        sleep(2);
+        *store_page_order_addr = DESKTOP_PAGE;
+    }
 }
+
+void registButton_action()
+{
+    if (strlen(store_account_str) > 0 && strlen(store_password_str) > 0) {
+        accountInfo_t* new_node = request_account_node(store_account_str, store_password_str);
+        insert_account_node(new_node, account_list_head);
+
+        memset(store_account_str, 0, sizeof(store_account_str));
+        memset(store_password_str, 0, sizeof(store_password_str));
+
+        painter_clear_range(-65 - 25, -200 - 25, 50 * 5, 50 * 2);
+        painter_draw_str(-65, -200, 50, "注册成功!");
+        // frameBuffer_display_frame();
+    }
+    else {
+        memset(store_account_str, 0, sizeof(store_account_str));
+        memset(store_password_str, 0, sizeof(store_password_str));
+
+        painter_clear_range(-65 - 25, -200 - 25, 50 * 5, 50 * 2);
+        painter_draw_str(-65, -200, 50, "注册失败!");
+
+        account_numbs = 0;
+        painter_draw_rectangle(-75, -100, 250, 50, White);
+        password_numbs = 0;
+        painter_draw_rectangle(-75, -25, 250, 50, White);
+    }
+}
+
 
 void fork_account_action()
 {
@@ -223,21 +285,30 @@ void fork_password_action()
 
 void numberButton_action()
 {
-    char draw_str[2];
-    sprintf(draw_str, "%d", cur_loop_numb);
+    char temp_str[2];
+    sprintf(temp_str, "%d", cur_loop_numb);
 
     switch (cur_input_focus) {
     case 0:
         if (account_numbs <= 10) {
-            painter_draw_str(-70 + account_numbs * 20, -100, 50, draw_str);
+            painter_draw_str(-65 + account_numbs * 20, -100, 50, temp_str);
             account_numbs += 1;
-            // printf("1\n");
+
+            if (strlen(store_account_str) < sizeof(store_account_str) - 1) {
+                store_account_str[strlen(store_account_str)] = temp_str[0];
+            }
+
             break;
         }
     case 1:
         if (password_numbs <= 10) {
-            painter_draw_str(-70 + password_numbs * 20, -25, 50, "*");
+            painter_draw_str(-65 + password_numbs * 20, -25, 50, "*");
             password_numbs += 1;
+
+            if (strlen(store_password_str) < sizeof(store_password_str) - 1) {
+                store_password_str[strlen(store_password_str)] = temp_str[0];
+            }
+
             break;
         }
     }

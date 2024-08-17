@@ -2,6 +2,7 @@
 #define LOGIN_PAGE_H
 
 
+
 struct jpegPicture;
 struct bmpButton;
 struct blankButton;
@@ -34,8 +35,8 @@ void run_loginPage(struct loginPage* page, enum PAGE* page_order);   // ok
 void inputBox_account_action();    // ok
 void inputBox_password_action();   // ok
 
-void loginButton_action();    // ok
-void registButton_action();   // ok
+void loginButton_action();   // ok
+void registButton_action();
 
 void fork_account_action();   // ok
 void fork_password_action();

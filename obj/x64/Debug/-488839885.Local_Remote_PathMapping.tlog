@@ -1,3 +1,6 @@
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\accountInfo.c|/home/unwarierbl/projects/DigitalBoard2/src/def/accountInfo.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def|/home/unwarierbl/projects/DigitalBoard2/src/def
+@D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def|@/home/unwarierbl/projects/DigitalBoard2/src/def
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c|/home/unwarierbl/projects/DigitalBoard2/src/def/device/frameBuffer.c
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device|/home/unwarierbl/projects/DigitalBoard2/src/def/device
 @D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device|@/home/unwarierbl/projects/DigitalBoard2/src/def/device
@@ -11,8 +14,6 @@ D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\page\loginPage.c|/home/un
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\page|/home/unwarierbl/projects/DigitalBoard2/src/def/page
 @D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\page|@/home/unwarierbl/projects/DigitalBoard2/src/def/page
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c|/home/unwarierbl/projects/DigitalBoard2/src/def/painter.c
-D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def|/home/unwarierbl/projects/DigitalBoard2/src/def
-@D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def|@/home/unwarierbl/projects/DigitalBoard2/src/def
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\main.c|/home/unwarierbl/projects/DigitalBoard2/src/main.c
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src|/home/unwarierbl/projects/DigitalBoard2/src
 @D:\HelloWorld\c++\粤嵌\广告机项目重写\src|@/home/unwarierbl/projects/DigitalBoard2/src
@@ -24,9 +25,10 @@ D:\HelloWorld\c++\粤嵌\广告机项目重写\include\jerror.h|/home/unwarierbl
 D:\HelloWorld\c++\粤嵌\广告机项目重写\include\jmorecfg.h|/home/unwarierbl/projects/DigitalBoard2/include/jmorecfg.h
 D:\HelloWorld\c++\粤嵌\广告机项目重写\include\jpeglib.h|/home/unwarierbl/projects/DigitalBoard2/include/jpeglib.h
 D:\HelloWorld\c++\粤嵌\广告机项目重写\include\list.h|/home/unwarierbl/projects/DigitalBoard2/include/list.h
-D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\decTypes.h|/home/unwarierbl/projects/DigitalBoard2/src/dec/decTypes.h
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\accountInfo.h|/home/unwarierbl/projects/DigitalBoard2/src/dec/accountInfo.h
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec|/home/unwarierbl/projects/DigitalBoard2/src/dec
 @D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec|@/home/unwarierbl/projects/DigitalBoard2/src/dec
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\decTypes.h|/home/unwarierbl/projects/DigitalBoard2/src/dec/decTypes.h
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\device\frameBuffer.h|/home/unwarierbl/projects/DigitalBoard2/src/dec/device/frameBuffer.h
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\device|/home/unwarierbl/projects/DigitalBoard2/src/dec/device
 @D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\device|@/home/unwarierbl/projects/DigitalBoard2/src/dec/device
