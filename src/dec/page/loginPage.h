@@ -30,7 +30,7 @@ struct loginPage* request_loginPage_direct();   // ok
 void init_loginPage(struct loginPage* page);      // ok
 void destroy_loginPage(struct loginPage* page);   // ok
 
-void run_loginPage(struct loginPage* page, enum PAGE* page_order);   // ok
+void run_loginPage(struct loginPage* page, enum PAGE* page_order_addr);   // ok
 
 void inputBox_account_action();    // ok
 void inputBox_password_action();   // ok

@@ -1,4 +1,6 @@
 ﻿#include "page/loginPage.h"
+#include "page/desktopPage.h"
+
 #include "decTypes.h"
 
 #include "device/frameBuffer.h"
@@ -14,7 +16,8 @@ int main(void)
 {
     account_list_head = request_account_node_direct();
 
-    struct loginPage* login_page;
+    struct loginPage*   login_page;
+    struct desktopPage* desktop_page;
 
     enum PAGE cur_page = LOGIN_PAGE;
 
@@ -22,7 +25,8 @@ int main(void)
     init_frameBuffer_device();
     init_painter();
 
-    login_page = request_loginPage_direct();
+    login_page   = request_loginPage_direct();
+    desktop_page = request_desktopPage_direct();
 
 
     while (cur_page != NO_PAGE) {
@@ -30,6 +34,11 @@ int main(void)
         case LOGIN_PAGE:
             init_loginPage(login_page);
             run_loginPage(login_page, &cur_page);
+            break;
+
+        case DESKTOP_PAGE:
+            init_desktopPage(desktop_page);
+            run_desktopPage(desktop_page, &cur_page);
             break;
         default: cur_page = NO_PAGE; break;
         }

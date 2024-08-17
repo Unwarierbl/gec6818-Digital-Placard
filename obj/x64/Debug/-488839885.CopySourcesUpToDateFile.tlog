@@ -1,12 +1,13 @@
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\accountInfo.c|638595221388346182|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c|638595067824145374|~/projects/DigitalBoard2/|
-D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\touchScreen.c|638595262424447841|~/projects/DigitalBoard2/|
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\touchScreen.c|638595263255788697|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\blankButton.c|638595094666491357|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c|638595251963289409|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\jpegPicture.c|638594906835801317|~/projects/DigitalBoard2/|
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\page\desktopPage.c|638595269831479401|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\page\loginPage.c|638595252492911098|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c|638595070793389202|~/projects/DigitalBoard2/|
-D:\HelloWorld\c++\粤嵌\广告机项目重写\src\main.c|638595248894226474|~/projects/DigitalBoard2/|
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\main.c|638595271090171699|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\include\font.h|638592454382686369|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\include\jconfig.h|638588835522326669|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\include\jerror.h|638588306935311121|~/projects/DigitalBoard2/|
@@ -20,7 +21,8 @@ D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\device\touchScreen.h|6385
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\module\blankButton.h|638595094724150243|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\module\bmpButton.h|638594961280746927|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\module\jpegPicture.h|638594906843756450|~/projects/DigitalBoard2/|
-D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\page\loginPage.h|638595212290123009|~/projects/DigitalBoard2/|
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\page\desktopPage.h|638595271824866009|~/projects/DigitalBoard2/|
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\page\loginPage.h|638595268206130739|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\painter.h|638595048740599143|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\lib\libfont.a|638587568820538433|~/projects/DigitalBoard2/|
 D:\HelloWorld\c++\粤嵌\广告机项目重写\lib\libjpeg.a|638587568820767923|~/projects/DigitalBoard2/|
