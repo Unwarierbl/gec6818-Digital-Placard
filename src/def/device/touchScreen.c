@@ -63,7 +63,7 @@ void touchScreen_update_data()
                 ts_status_data.cur_touch_cord.x = ts_data.value * (800.0f / 1024) - 400;
             }
             else if (ts_data.code == ABS_Y) {
-                ts_status_data.cur_touch_cord.x = ts_data.value * (480.0f / 600) - 240;
+                ts_status_data.cur_touch_cord.y = ts_data.value * (480.0f / 600) - 240;
             }
 
 

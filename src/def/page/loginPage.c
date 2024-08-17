@@ -3,6 +3,7 @@
 #include "decTypes.h"
 #include "device/touchScreen.h"
 #include "device/frameBuffer.h"
+#include "painter.h"
 
 #include "module/jpegPicture.h"
 #include "module/bmpButton.h"
@@ -35,10 +36,38 @@ void init_loginPage(struct loginPage* page)
     jpegPic_load_pic(page->bg_jpeg_picture);
 
     page->login_button                 = request_bmpButton_direct();
+    page->login_button->center_cord.x  = -150;
+    page->login_button->center_cord.y  = 180;
     page->login_button->handle_release = loginButton_action;
     bmpButton_set_release_pic_path(page->login_button, "res/button/login_1.bmp");
     bmpButton_set_press_pic_path(page->login_button, "res/button/login_2.bmp");
     bmpButton_load_pic(page->login_button);
+
+    page->regist_button                = request_bmpButton_direct();
+    page->regist_button->center_cord.x = 150;
+    page->regist_button->center_cord.y = 180;
+    // page->login_button->handle_release = loginButton_action;
+    bmpButton_set_release_pic_path(page->regist_button, "res/button/regist_1.bmp");
+    bmpButton_set_press_pic_path(page->regist_button, "res/button/regist_2.bmp");
+    bmpButton_load_pic(page->regist_button);
+
+    for (int i = 0; i <= 9; i++) {
+        char temp_path_str1[256];
+        char temp_path_str2[256];
+        memset(temp_path_str1, 0, sizeof(temp_path_str1));
+        sprintf(temp_path_str1, "res/number/number_%d_1.bmp", i);
+
+        memset(temp_path_str2, 0, sizeof(temp_path_str2));
+        sprintf(temp_path_str2, "res/number/number_%d_2.bmp", i);
+
+        page->number_button[i]                = request_bmpButton_direct();
+        page->number_button[i]->center_cord.x = -270 + 60 * i;
+        page->number_button[i]->center_cord.y = 80;
+        // page->login_button->handle_release = loginButton_action;
+        bmpButton_set_release_pic_path(page->number_button[i], temp_path_str1);
+        bmpButton_set_press_pic_path(page->number_button[i], temp_path_str2);
+        bmpButton_load_pic(page->number_button[i]);
+    }
 }
 
 void destroy_loginPage(struct loginPage* page)
@@ -54,11 +83,12 @@ void run_loginPage(struct loginPage* page, enum PAGE* page_order_addr)
     store_page_order_addr = page_order_addr;
 
     jpegPic_draw(page->bg_jpeg_picture);
+
+    painter_draw_rectangle(-75, -100, 250, 50, White);
+    painter_draw_rectangle(-75, -25, 250, 50, White);
+
     frameBuffer_display_frame();
-
-    // bmpButton_draw(page->login_button);
-    // frameBuffer_set_bg_as_cur_display();
-
+    frameBuffer_set_bg_as_cur_display();
 
     struct timeb ts1, ts2;
     time_t       delta_time;
@@ -80,14 +110,13 @@ void run_loginPage(struct loginPage* page, enum PAGE* page_order_addr)
             bmpButton_analyze_touch(page->login_button, get_touch_status_data());
             bmpButton_draw(page->login_button);
 
-            // touchStatusData temp_data;
-            // temp_data = get_touch_status_data();
-            // printf("touch status=%d,cur_touch_cord=(%d,%d)\n",
-            //        temp_data.touch_status,
-            //        temp_data.cur_touch_cord.x,
-            //        temp_data.cur_touch_cord.y);
+            bmpButton_analyze_touch(page->regist_button, get_touch_status_data());
+            bmpButton_draw(page->regist_button);
 
-
+            for (int i = 0; i <= 9; i++) {
+                bmpButton_analyze_touch(page->number_button[i], get_touch_status_data());
+                bmpButton_draw(page->number_button[i]);
+            }
 
             frameBuffer_display_frame();
         }

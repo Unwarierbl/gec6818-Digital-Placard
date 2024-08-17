@@ -221,12 +221,35 @@ void bmpButton_draw(struct bmpButton* draw_button)
 
 void bmpButton_analyze_touch(struct bmpButton* button, touchStatusData touchScreen_data)
 {
+    vec2 touch_cord = touchScreen_data.cur_touch_cord;
+
     switch (touchScreen_data.touch_status) {
-    case PRESS: button->cur_press_status = PRESS; break;
+    case PRESS:
+        // printf("touch:(%d,%d) this:(%d,%d)(%d,%d)\n",
+        //        touch_cord.x,
+        //        touch_cord.y,
+        //        button->center_cord.x,
+        //        button->center_cord.y,
+        //        button->press_image_width,
+        //        button->press_image_height);
+        if (touch_cord.x >= button->center_cord.x - button->press_image_width / 2 &&
+            touch_cord.x <= button->center_cord.x + button->press_image_width / 2 &&
+            touch_cord.y >= button->center_cord.y - button->press_image_height / 2 &&
+            touch_cord.y <= button->center_cord.y + button->press_image_height / 2) {
+
+            button->cur_press_status = PRESS;
+        }
+        break;
     case RELEASE:
-        button->cur_press_status = RELEASE;
-        if (button->handle_release != NULL) {
-            button->handle_release(button);
+        if (touch_cord.x >= button->center_cord.x - button->release_image_width / 2 &&
+            touch_cord.x <= button->center_cord.x + button->release_image_width / 2 &&
+            touch_cord.y >= button->center_cord.y - button->release_image_height / 2 &&
+            touch_cord.y <= button->center_cord.y + button->release_image_height / 2) {
+
+            button->cur_press_status = RELEASE;
+            if (button->handle_release != NULL) {
+                button->handle_release(button);
+            }
         }
         break;
     default: break;
