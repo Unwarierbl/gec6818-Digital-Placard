@@ -96,6 +96,8 @@ typedef struct
 
 
 
+
+
 #pragma pack(1)
 // bmp 图像
 typedef struct

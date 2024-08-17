@@ -45,4 +45,5 @@ int main(void)
     }
 
     destroy_loginPage(login_page);
+    destroy_desktopPage(desktop_page);
 }
