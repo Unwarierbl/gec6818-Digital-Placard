@@ -7,6 +7,7 @@
 
 #include "module/jpegPicture.h"
 #include "module/bmpButton.h"
+#include "module/blankButton.h"
 
 
 #include <stdio.h>
@@ -17,11 +18,16 @@
 #include <time.h>
 #include <sys/timeb.h>
 
-static int press_number_order;
+static int cur_input_focus;
+
+static int press_number;
+
 static int account_numbs;
 static int password_numbs;
 
 static enum PAGE* store_page_order_addr;
+
+static int cur_loop_numb;
 
 struct loginPage* request_loginPage_direct()
 {
@@ -35,13 +41,31 @@ struct loginPage* request_loginPage_direct()
 
 void init_loginPage(struct loginPage* page)
 {
-    press_number_order = 0;
-    account_numbs      = 0;
-    password_numbs     = 0;
+    cur_input_focus = 0;
+
+    press_number = 0;
+
+    account_numbs  = 0;
+    password_numbs = 0;
 
     page->bg_jpeg_picture = request_jpegPic_direct();
     jpegPic_set_pic_path(page->bg_jpeg_picture, "res/bg_1.jpg");
     jpegPic_load_pic(page->bg_jpeg_picture);
+
+    page->inputBox_account_button                 = request_blankButton_direct();
+    page->inputBox_account_button->center_cord.x  = 50;
+    page->inputBox_account_button->center_cord.y  = -75;
+    page->inputBox_account_button->button_width   = 250;
+    page->inputBox_account_button->button_height  = 50;
+    page->inputBox_account_button->handle_release = inputBox_account_action;
+
+    page->inputBox_password_button                 = request_blankButton_direct();
+    page->inputBox_password_button->center_cord.x  = 50;
+    page->inputBox_password_button->center_cord.y  = 0;
+    page->inputBox_password_button->button_width   = 250;
+    page->inputBox_password_button->button_height  = 50;
+    page->inputBox_password_button->handle_release = inputBox_password_action;
+
 
     page->login_button                 = request_bmpButton_direct();
     page->login_button->center_cord.x  = -150;
@@ -59,18 +83,18 @@ void init_loginPage(struct loginPage* page)
     bmpButton_set_press_pic_path(page->regist_button, "res/button/regist_2.bmp");
     bmpButton_load_pic(page->regist_button);
 
-    page->fork_account_button                = request_bmpButton_direct();
-    page->fork_account_button->center_cord.x = 220;
-    page->fork_account_button->center_cord.y = -75;
-    // page->login_button->handle_release = loginButton_action;
+    page->fork_account_button                 = request_bmpButton_direct();
+    page->fork_account_button->center_cord.x  = 220;
+    page->fork_account_button->center_cord.y  = -75;
+    page->fork_account_button->handle_release = fork_account_action;
     bmpButton_set_release_pic_path(page->fork_account_button, "res/button/fork_1.bmp");
     bmpButton_set_press_pic_path(page->fork_account_button, "res/button/fork_2.bmp");
     bmpButton_load_pic(page->fork_account_button);
 
-    page->fork_password_button                = request_bmpButton_direct();
-    page->fork_password_button->center_cord.x = 220;
-    page->fork_password_button->center_cord.y = 0;
-    // page->login_button->handle_release = loginButton_action;
+    page->fork_password_button                 = request_bmpButton_direct();
+    page->fork_password_button->center_cord.x  = 220;
+    page->fork_password_button->center_cord.y  = 0;
+    page->fork_password_button->handle_release = fork_password_action;
     bmpButton_set_release_pic_path(page->fork_password_button, "res/button/fork_1.bmp");
     bmpButton_set_press_pic_path(page->fork_password_button, "res/button/fork_2.bmp");
     bmpButton_load_pic(page->fork_password_button);
@@ -86,10 +110,10 @@ void init_loginPage(struct loginPage* page)
         memset(temp_path_str2, 0, sizeof(temp_path_str2));
         sprintf(temp_path_str2, "res/number/number_%d_2.bmp", i);
 
-        page->number_button[i]                = request_bmpButton_direct();
-        page->number_button[i]->center_cord.x = -270 + 60 * i;
-        page->number_button[i]->center_cord.y = 80;
-        // page->login_button->handle_release = loginButton_action;
+        page->number_button[i]                 = request_bmpButton_direct();
+        page->number_button[i]->center_cord.x  = -270 + 60 * i;
+        page->number_button[i]->center_cord.y  = 80;
+        page->number_button[i]->handle_release = numberButton_action;
         bmpButton_set_release_pic_path(page->number_button[i], temp_path_str1);
         bmpButton_set_press_pic_path(page->number_button[i], temp_path_str2);
         bmpButton_load_pic(page->number_button[i]);
@@ -138,33 +162,82 @@ void run_loginPage(struct loginPage* page, enum PAGE* page_order_addr)
             touchScreen_listen();
             touchScreen_update_data();
 
+            blankButton_analyze_touch(page->inputBox_account_button, get_touch_status_data());
+            blankButton_analyze_touch(page->inputBox_password_button, get_touch_status_data());
+
             bmpButton_analyze_touch(page->login_button, get_touch_status_data());
             bmpButton_draw(page->login_button);
-
             bmpButton_analyze_touch(page->regist_button, get_touch_status_data());
             bmpButton_draw(page->regist_button);
 
             bmpButton_analyze_touch(page->fork_account_button, get_touch_status_data());
             bmpButton_draw(page->fork_account_button);
-
             bmpButton_analyze_touch(page->fork_password_button, get_touch_status_data());
             bmpButton_draw(page->fork_password_button);
 
 
 
-            for (int i = 0; i <= 9; i++) {
-                bmpButton_analyze_touch(page->number_button[i], get_touch_status_data());
-                bmpButton_draw(page->number_button[i]);
+            for (cur_loop_numb = 0; cur_loop_numb <= 9; cur_loop_numb++) {
+                bmpButton_analyze_touch(page->number_button[cur_loop_numb],
+                                        get_touch_status_data());
+                bmpButton_draw(page->number_button[cur_loop_numb]);
             }
-
-            frameBuffer_display_frame();
         }
 
-    } while (*page_order_addr == LOGIN_PAGE);
+        frameBuffer_display_frame();
+    }
+
+    while (*page_order_addr == LOGIN_PAGE);
 }
+
+
+void inputBox_account_action()
+{
+    cur_input_focus = 0;
+}
+
+void inputBox_password_action()
+{
+    cur_input_focus = 1;
+}
+
 
 
 void loginButton_action()
 {
     *store_page_order_addr = NO_PAGE;
+}
+
+void fork_account_action()
+{
+    account_numbs = 0;
+    painter_draw_rectangle(-75, -100, 250, 50, White);
+}
+
+void fork_password_action()
+{
+    password_numbs = 0;
+    painter_draw_rectangle(-75, -25, 250, 50, White);
+}
+
+
+void numberButton_action()
+{
+    char draw_str[2];
+    sprintf(draw_str, "%d", cur_loop_numb);
+
+    switch (cur_input_focus) {
+    case 0:
+        if (account_numbs <= 10) {
+            painter_draw_str(-70 + account_numbs * 20, -100, 50, draw_str);
+            account_numbs += 1;
+            break;
+        }
+    case 1:
+        if (password_numbs <= 10) {
+            painter_draw_str(-70 + password_numbs * 20, -25, 50, "*");
+            password_numbs += 1;
+            break;
+        }
+    }
 }

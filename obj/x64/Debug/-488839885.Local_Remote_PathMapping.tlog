@@ -2,9 +2,10 @@ D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c|/hom
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device|/home/unwarierbl/projects/DigitalBoard2/src/def/device
 @D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device|@/home/unwarierbl/projects/DigitalBoard2/src/def/device
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\touchScreen.c|/home/unwarierbl/projects/DigitalBoard2/src/def/device/touchScreen.c
-D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c|/home/unwarierbl/projects/DigitalBoard2/src/def/module/bmpButton.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\blankButton.c|/home/unwarierbl/projects/DigitalBoard2/src/def/module/blankButton.c
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module|/home/unwarierbl/projects/DigitalBoard2/src/def/module
 @D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module|@/home/unwarierbl/projects/DigitalBoard2/src/def/module
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c|/home/unwarierbl/projects/DigitalBoard2/src/def/module/bmpButton.c
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\jpegPicture.c|/home/unwarierbl/projects/DigitalBoard2/src/def/module/jpegPicture.c
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\page\loginPage.c|/home/unwarierbl/projects/DigitalBoard2/src/def/page/loginPage.c
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\page|/home/unwarierbl/projects/DigitalBoard2/src/def/page
@@ -30,9 +31,10 @@ D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\device\frameBuffer.h|/hom
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\device|/home/unwarierbl/projects/DigitalBoard2/src/dec/device
 @D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\device|@/home/unwarierbl/projects/DigitalBoard2/src/dec/device
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\device\touchScreen.h|/home/unwarierbl/projects/DigitalBoard2/src/dec/device/touchScreen.h
-D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\module\bmpButton.h|/home/unwarierbl/projects/DigitalBoard2/src/dec/module/bmpButton.h
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\module\blankButton.h|/home/unwarierbl/projects/DigitalBoard2/src/dec/module/blankButton.h
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\module|/home/unwarierbl/projects/DigitalBoard2/src/dec/module
 @D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\module|@/home/unwarierbl/projects/DigitalBoard2/src/dec/module
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\module\bmpButton.h|/home/unwarierbl/projects/DigitalBoard2/src/dec/module/bmpButton.h
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\module\jpegPicture.h|/home/unwarierbl/projects/DigitalBoard2/src/dec/module/jpegPicture.h
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\page\loginPage.h|/home/unwarierbl/projects/DigitalBoard2/src/dec/page/loginPage.h
 D:\HelloWorld\c++\粤嵌\广告机项目重写\src\dec\page|/home/unwarierbl/projects/DigitalBoard2/src/dec/page

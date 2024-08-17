@@ -88,6 +88,7 @@
   <ItemGroup>
     <ClCompile Include="src\def\device\frameBuffer.c" />
     <ClCompile Include="src\def\device\touchScreen.c" />
+    <ClCompile Include="src\def\module\blankButton.c" />
     <ClCompile Include="src\def\module\bmpButton.c" />
     <ClCompile Include="src\def\module\jpegPicture.c" />
     <ClCompile Include="src\def\page\loginPage.c" />
@@ -104,6 +105,7 @@
     <ClInclude Include="src\dec\decTypes.h" />
     <ClInclude Include="src\dec\device\frameBuffer.h" />
     <ClInclude Include="src\dec\device\touchScreen.h" />
+    <ClInclude Include="src\dec\module\blankButton.h" />
     <ClInclude Include="src\dec\module\bmpButton.h" />
     <ClInclude Include="src\dec\module\jpegPicture.h" />
     <ClInclude Include="src\dec\page\loginPage.h" />
