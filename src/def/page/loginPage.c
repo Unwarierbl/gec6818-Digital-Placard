@@ -17,6 +17,10 @@
 #include <time.h>
 #include <sys/timeb.h>
 
+static int press_number_order;
+static int account_numbs;
+static int password_numbs;
+
 static enum PAGE* store_page_order_addr;
 
 struct loginPage* request_loginPage_direct()
@@ -31,6 +35,10 @@ struct loginPage* request_loginPage_direct()
 
 void init_loginPage(struct loginPage* page)
 {
+    press_number_order = 0;
+    account_numbs      = 0;
+    password_numbs     = 0;
+
     page->bg_jpeg_picture = request_jpegPic_direct();
     jpegPic_set_pic_path(page->bg_jpeg_picture, "res/bg_1.jpg");
     jpegPic_load_pic(page->bg_jpeg_picture);
@@ -50,6 +58,24 @@ void init_loginPage(struct loginPage* page)
     bmpButton_set_release_pic_path(page->regist_button, "res/button/regist_1.bmp");
     bmpButton_set_press_pic_path(page->regist_button, "res/button/regist_2.bmp");
     bmpButton_load_pic(page->regist_button);
+
+    page->fork_account_button                = request_bmpButton_direct();
+    page->fork_account_button->center_cord.x = 220;
+    page->fork_account_button->center_cord.y = -75;
+    // page->login_button->handle_release = loginButton_action;
+    bmpButton_set_release_pic_path(page->fork_account_button, "res/button/fork_1.bmp");
+    bmpButton_set_press_pic_path(page->fork_account_button, "res/button/fork_2.bmp");
+    bmpButton_load_pic(page->fork_account_button);
+
+    page->fork_password_button                = request_bmpButton_direct();
+    page->fork_password_button->center_cord.x = 220;
+    page->fork_password_button->center_cord.y = 0;
+    // page->login_button->handle_release = loginButton_action;
+    bmpButton_set_release_pic_path(page->fork_password_button, "res/button/fork_1.bmp");
+    bmpButton_set_press_pic_path(page->fork_password_button, "res/button/fork_2.bmp");
+    bmpButton_load_pic(page->fork_password_button);
+
+
 
     for (int i = 0; i <= 9; i++) {
         char temp_path_str1[256];
@@ -87,8 +113,13 @@ void run_loginPage(struct loginPage* page, enum PAGE* page_order_addr)
     painter_draw_rectangle(-75, -100, 250, 50, White);
     painter_draw_rectangle(-75, -25, 250, 50, White);
 
+
+    painter_draw_str(-170, -100, 50, "账号:");
+    painter_draw_str(-170, -25, 50, "密码:");
+
     frameBuffer_display_frame();
     frameBuffer_set_bg_as_cur_display();
+
 
     struct timeb ts1, ts2;
     time_t       delta_time;
@@ -112,6 +143,14 @@ void run_loginPage(struct loginPage* page, enum PAGE* page_order_addr)
 
             bmpButton_analyze_touch(page->regist_button, get_touch_status_data());
             bmpButton_draw(page->regist_button);
+
+            bmpButton_analyze_touch(page->fork_account_button, get_touch_status_data());
+            bmpButton_draw(page->fork_account_button);
+
+            bmpButton_analyze_touch(page->fork_password_button, get_touch_status_data());
+            bmpButton_draw(page->fork_password_button);
+
+
 
             for (int i = 0; i <= 9; i++) {
                 bmpButton_analyze_touch(page->number_button[i], get_touch_status_data());

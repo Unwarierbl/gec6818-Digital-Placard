@@ -14,6 +14,9 @@ struct loginPage
     struct bmpButton* login_button;
     struct bmpButton* regist_button;
 
+    struct bmpButton* fork_account_button;
+    struct bmpButton* fork_password_button;
+
     struct bmpButton* number_button[10];
 };
 
@@ -26,5 +29,10 @@ void run_loginPage(struct loginPage* page, enum PAGE* page_order);   // ok
 
 void loginButton_action();
 void registButton_action();
+
+void fork_account_action();
+void fork_password_action();
+
+void numberButton_action();
 
 #endif

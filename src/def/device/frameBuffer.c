@@ -76,6 +76,13 @@ void destroy_frameBuffer_device()
     close(fb_fd);
 }
 
+unsigned int* get_frameBuffer_cur_buffer()
+{
+    return fb_buffer;
+}
+
+
+
 void frameBuffer_display_frame()
 {
     memcpy(fb_addr, fb_buffer, 800 * 480 * 4);

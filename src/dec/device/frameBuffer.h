@@ -23,9 +23,10 @@
 //      如果组件绘图需要更新,刷新对应区域
 //      display
 
-int init_frameBuffer_device();   // ok
-
+int  init_frameBuffer_device();      // ok
 void destroy_frameBuffer_device();   // ok
+
+unsigned int* get_frameBuffer_cur_buffer();   // ok
 
 void frameBuffer_display_frame();   // ok
 

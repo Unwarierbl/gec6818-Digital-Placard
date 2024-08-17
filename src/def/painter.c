@@ -6,14 +6,38 @@
 #include <decTypes.h>
 #include <font.h>
 
+static unsigned int* store_frameBuffer_addr;
+
 static void (*basic_draw_RGB_point)(int x, int y, unsigned int color);
 static void (*basic_draw_ARGB_point)(int x, int y, unsigned int color);
+
+static font*  f;
+static bitmap bm;
 
 
 void init_painter()
 {
+    store_frameBuffer_addr = get_frameBuffer_cur_buffer();
+
     basic_draw_RGB_point  = set_point_RGB_color;
     basic_draw_ARGB_point = set_point_ARGB_color;
+
+
+    bm.height       = 480;
+    bm.width        = 800;
+    bm.byteperpixel = 4;
+    bm.map          = (void*)store_frameBuffer_addr;   // 指定画板是显存地址
+
+
+
+    // fontPrint(
+    //     f,
+    //     &bm,
+    //     100,
+    //     100,
+    //     "靓仔",
+    //     getColor(0, 0, 0xff, 0),
+    //     0);   // fontPrint(字体资源， 显存资源， x坐标，y坐标，显示的字符串, 字体颜色, 默认写0);
 }
 void destroy_painter()
 {}
@@ -26,6 +50,24 @@ void painter_draw_ARGB_point(int x, int y, unsigned int color)
 {
     basic_draw_ARGB_point(x, y, color);
 }
+
+void painter_draw_str(int x, int y, int font_size, char* draw_str)
+{
+    f = fontLoad("/usr/share/fonts/SourceHanSerifCN-Heavy.ttf");
+    fontSetSize(f, 50);
+
+    fontPrint(
+        f,
+        &bm,
+        x + 400,
+        y + 240,
+        draw_str,
+        getColor(0, 0, 0x00, 0),
+        0);   // fontPrint(字体资源， 显存资源， x坐标，y坐标，显示的字符串, 字体颜色, 默认写0);
+
+    fontUnload(f);
+}
+
 
 void painter_clear_range(int x, int y, int width, int height)
 {

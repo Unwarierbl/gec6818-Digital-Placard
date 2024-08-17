@@ -7,7 +7,7 @@ void destroy_painter();   // ok
 void painter_draw_RGB_point(int x, int y, unsigned int color);    // ok
 void painter_draw_ARGB_point(int x, int y, unsigned int color);   // ok
 
-// void painter_draw_font(int x, int y, int font_size, char* font_str);
+void painter_draw_str(int x, int y, int font_size, char* draw_str);   // ok
 // void painter_clear_font(int x, int y, int font_size, char* font_str);
 
 void painter_clear_range(int x, int y, int width, int height);
