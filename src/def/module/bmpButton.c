@@ -241,14 +241,16 @@ void bmpButton_analyze_touch(struct bmpButton* button, touchStatusData touchScre
         }
         break;
     case RELEASE:
-        if (touch_cord.x >= button->center_cord.x - button->release_image_width / 2 &&
-            touch_cord.x <= button->center_cord.x + button->release_image_width / 2 &&
-            touch_cord.y >= button->center_cord.y - button->release_image_height / 2 &&
-            touch_cord.y <= button->center_cord.y + button->release_image_height / 2) {
+        if (button->cur_press_status == PRESS) {
+            if (touch_cord.x >= button->center_cord.x - button->release_image_width / 2 &&
+                touch_cord.x <= button->center_cord.x + button->release_image_width / 2 &&
+                touch_cord.y >= button->center_cord.y - button->release_image_height / 2 &&
+                touch_cord.y <= button->center_cord.y + button->release_image_height / 2) {
 
-            button->cur_press_status = RELEASE;
-            if (button->handle_release != NULL) {
-                button->handle_release(button);
+                button->cur_press_status = RELEASE;
+                if (button->handle_release != NULL) {
+                    button->handle_release(button);
+                }
             }
         }
         break;

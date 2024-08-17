@@ -231,6 +231,7 @@ void numberButton_action()
         if (account_numbs <= 10) {
             painter_draw_str(-70 + account_numbs * 20, -100, 50, draw_str);
             account_numbs += 1;
+            // printf("1\n");
             break;
         }
     case 1:
