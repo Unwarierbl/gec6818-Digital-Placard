@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:/Users/Unwarierbl/AppData/Local/Microsoft/Linux/HeaderCache/1.0/-488839885/usr/include",
+                "C:/Users/Unwarierbl/AppData/Local/Microsoft/Linux/HeaderCache/1.0/-488839885/usr/include/x86_64-linux-gnu",
+                "src/dec/",
+                "include/"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.22621.0",
+            "intelliSenseMode": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}

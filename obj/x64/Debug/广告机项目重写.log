@@ -1,0 +1,26 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: 中间目录(D:\HelloWorld\c++\粤嵌\广告机项目重写\obj\x64\Debug\)包含从另一个项目(DigitalBoard.vcxproj, 广告机项目重写.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+  正在验证源
+  正在将源远程复制到“192.168.136.128”
+  正在验证体系结构
+  正在验证体系结构
+  正在启动远程生成
+  正在编译源:
+  bmpButton.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(37): warning : passing argument 1 of 'free' makes pointer from integer without a cast
+/usr/local/arm/arm-2009q3/bin/../arm-none-linux-gnueabi/libc/usr/include/stdlib.h(488): message : expected 'void *' but argument is of type 'int'
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(69): warning : conversion to 'int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(81): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(85): warning : conversion to 'long int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(86): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(87): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(88): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(104): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(128): warning : conversion to 'int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(140): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(144): warning : conversion to 'long int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(145): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(146): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(147): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(163): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+  正在链接对象
+  广告机项目重写.vcxproj -> D:\HelloWorld\c++\粤嵌\广告机项目重写\bin\x64\Debug\DigitalBoard2.out
