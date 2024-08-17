@@ -16,6 +16,8 @@
 #include <time.h>
 #include <sys/timeb.h>
 
+static enum PAGE* store_page_order_addr;
+
 struct loginPage* request_loginPage_direct()
 {
     struct loginPage* new_page = (struct loginPage*)malloc(sizeof(struct loginPage));
@@ -32,9 +34,10 @@ void init_loginPage(struct loginPage* page)
     jpegPic_set_pic_path(page->bg_jpeg_picture, "res/bg_1.jpg");
     jpegPic_load_pic(page->bg_jpeg_picture);
 
-    page->login_button = request_bmpButton_direct();
-    bmpButton_set_press_pic_path(page->login_button, "res/button/login_1.bmp");
-    bmpButton_set_release_pic_path(page->login_button, "res/button/login_2.bmp");
+    page->login_button                 = request_bmpButton_direct();
+    page->login_button->handle_release = loginButton_action;
+    bmpButton_set_release_pic_path(page->login_button, "res/button/login_1.bmp");
+    bmpButton_set_press_pic_path(page->login_button, "res/button/login_2.bmp");
     bmpButton_load_pic(page->login_button);
 }
 
@@ -46,13 +49,15 @@ void destroy_loginPage(struct loginPage* page)
 
 
 
-void run_loginPage(struct loginPage* page, enum PAGE* page_order)
+void run_loginPage(struct loginPage* page, enum PAGE* page_order_addr)
 {
+    store_page_order_addr = page_order_addr;
+
     jpegPic_draw(page->bg_jpeg_picture);
     frameBuffer_display_frame();
 
-    bmpButton_draw(page->login_button);
-    frameBuffer_set_bg_as_cur_display();
+    // bmpButton_draw(page->login_button);
+    // frameBuffer_set_bg_as_cur_display();
 
 
     struct timeb ts1, ts2;
@@ -60,9 +65,6 @@ void run_loginPage(struct loginPage* page, enum PAGE* page_order)
     ftime(&ts1);
 
     do {
-        // touchScreen_listen();
-        // touchScreen_update_data();
-
 
         ftime(&ts2);
         delta_time = ts2.millitm - ts1.millitm;
@@ -72,8 +74,29 @@ void run_loginPage(struct loginPage* page, enum PAGE* page_order)
             }
             ts1 = ts2;
 
+            touchScreen_listen();
+            touchScreen_update_data();
+
+            bmpButton_analyze_touch(page->login_button, get_touch_status_data());
+            bmpButton_draw(page->login_button);
+
+            // touchStatusData temp_data;
+            // temp_data = get_touch_status_data();
+            // printf("touch status=%d,cur_touch_cord=(%d,%d)\n",
+            //        temp_data.touch_status,
+            //        temp_data.cur_touch_cord.x,
+            //        temp_data.cur_touch_cord.y);
+
+
+
             frameBuffer_display_frame();
         }
 
-    } while (*page_order == LOGIN_PAGE);
+    } while (*page_order_addr == LOGIN_PAGE);
+}
+
+
+void loginButton_action()
+{
+    *store_page_order_addr = NO_PAGE;
 }

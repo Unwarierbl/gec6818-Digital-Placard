@@ -18,8 +18,12 @@ void touchScreen_listen();   // ok
 
 void touchScreen_update_data();   // ok
 // 滑动返回1,否则返回0
-int judge_hold_or_slide();   // ok
+int  judge_hold_or_slide();   // ok
+void update_touch_slide_status();
+
 
 touchStatusData get_touch_status_data();   // ok
+
+
 
 #endif

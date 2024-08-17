@@ -64,12 +64,30 @@ enum TOUCH_STATUS
     RELEASE
 };
 
+enum TOUCH_SLIDE_STATUS
+{
+    NO_SLIDE         = 0x00,
+    SLIDE_LEFT       = 0x01,
+    SLIDE_RIGHT      = 0x02,
+    SLIDE_DOWN       = 0x04,
+    SLIDE_UP         = 0x08,
+    SLIDE_LEFT_UP    = SLIDE_LEFT | SLIDE_UP,
+    SLIDE_LEFT_DOWN  = SLIDE_LEFT | SLIDE_DOWN,
+    SLIDE_RIGHT_UP   = SLIDE_RIGHT | SLIDE_UP,
+    SLIDE_RIGHT_DOWN = SLIDE_RIGHT | SLIDE_DOWN,
+};
+
 typedef struct
 {
     enum TOUCH_STATUS touch_status;
 
-    vec2 touch_cord;
-    vec2 slide_offset;
+    vec2 cur_touch_cord;
+    vec2 pre_touch_cord;
+    vec2 press_cord;
+    vec2 release_cord;
+
+    enum TOUCH_SLIDE_STATUS slide_status;
+    vec2                    slide_offset;
 } touchStatusData;
 
 

@@ -16,11 +16,6 @@ static ssize_t            rd_size;
 static struct input_event ts_data;
 
 
-static vec2 ts_cur_cord;
-static vec2 ts_pre_cord;
-static vec2 ts_press_cord;
-static vec2 ts_release_cord;
-
 
 int init_touchScreen_device()
 {
@@ -55,30 +50,46 @@ void touchScreen_update_data()
         if (ts_data.type == EV_KEY) {
             if (ts_data.value == 1) {
                 ts_status_data.touch_status = PRESS;
-                ts_press_cord               = ts_cur_cord;
+                // printf("press\n");
             }
             else {
                 ts_status_data.touch_status = RELEASE;   // 这两个状态可能只有一瞬间
-                ts_release_cord             = ts_cur_cord;
+                ts_status_data.slide_status = NO_SLIDE;
+                // printf("release\n");
             }
         }
         else if (ts_data.type == EV_ABS) {
             if (ts_data.code == ABS_X) {
-                ts_status_data.touch_cord.x = ts_data.value * (800.0f / 1024) - 400;
+                ts_status_data.cur_touch_cord.x = ts_data.value * (800.0f / 1024) - 400;
             }
             else if (ts_data.code == ABS_Y) {
-                ts_status_data.touch_cord.x = ts_data.value * (480.0f / 600) - 240;
+                ts_status_data.cur_touch_cord.x = ts_data.value * (480.0f / 600) - 240;
             }
-            if ((ts_status_data.touch_status == HOLD || ts_status_data.touch_status == PRESS) &&
-                judge_hold_or_slide()) {   // 检测 hold 和 slide
-                ts_status_data.touch_status = SLIDE;
+
+
+            switch (ts_status_data.touch_status) {
+            case PRESS: ts_status_data.press_cord = ts_status_data.cur_touch_cord; break;
+            case RELEASE: ts_status_data.release_cord = ts_status_data.cur_touch_cord; break;
+            case HOLD:
+                if (judge_hold_or_slide()) {
+                    ts_status_data.touch_status = SLIDE;
+                    update_touch_slide_status();
+                }
+            case SLIDE: update_touch_slide_status(); break;
+            default: break;
             }
-            ts_pre_cord = ts_cur_cord;
+
+
+
+            ts_status_data.pre_touch_cord = ts_status_data.cur_touch_cord;
         }
     }
     else {                                       // 并没有检测 rd_size 为负数时的情况
         switch (ts_status_data.touch_status) {   // 无输入时通过前向状态确定当前状态
-        case RELEASE: ts_status_data.touch_status = NO_TOUCH; break;
+        case RELEASE:
+            ts_status_data.touch_status = NO_TOUCH;
+            ts_status_data.slide_status = NO_SLIDE;
+            break;
         case PRESS: ts_status_data.touch_status = HOLD; break;
 
         default: break;
@@ -88,11 +99,39 @@ void touchScreen_update_data()
 
 int judge_hold_or_slide()
 {
-    if (abs(ts_cur_cord.x - ts_pre_cord.x) >= 3 || abs(ts_cur_cord.y - ts_pre_cord.y) >= 3) {
+    if (abs(ts_status_data.cur_touch_cord.x - ts_status_data.pre_touch_cord.x) >= 3 ||
+        abs(ts_status_data.cur_touch_cord.y - ts_status_data.pre_touch_cord.y) >= 3) {
         return 1;
     }
     else {
         return 0;
+    }
+}
+
+void update_touch_slide_status()
+{
+    if (abs(ts_status_data.cur_touch_cord.x - ts_status_data.pre_touch_cord.x) >= 3) {
+        if (ts_status_data.cur_touch_cord.x > ts_status_data.pre_touch_cord.x) {
+            ts_status_data.slide_status &= ~SLIDE_LEFT;
+            ts_status_data.slide_status |= SLIDE_RIGHT;
+        }
+        else {
+            ts_status_data.slide_status &= ~SLIDE_RIGHT;
+            ts_status_data.slide_status |= SLIDE_LEFT;
+        }
+    }
+    else if (abs(ts_status_data.cur_touch_cord.y - ts_status_data.pre_touch_cord.y) >= 3) {
+        if (ts_status_data.cur_touch_cord.y > ts_status_data.pre_touch_cord.y) {
+            ts_status_data.slide_status &= ~SLIDE_UP;
+            ts_status_data.slide_status |= SLIDE_DOWN;
+        }
+        else {
+            ts_status_data.slide_status &= ~SLIDE_DOWN;
+            ts_status_data.slide_status |= SLIDE_UP;
+        }
+    }
+    else {
+        ts_status_data.slide_status = NO_SLIDE;
     }
 }
 
