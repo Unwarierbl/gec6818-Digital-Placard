@@ -34,7 +34,7 @@ void remove_bmpButton_direct(struct bmpButton* remove_button)
         free(remove_button->press_pic_buffer);
     }
     if (remove_button->release_pic_buffer != NULL) {
-        free(remove_button->release_image_height);
+        free(remove_button->release_pic_buffer);
     }
 
     free(remove_button);

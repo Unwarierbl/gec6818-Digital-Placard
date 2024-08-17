@@ -132,6 +132,18 @@ void init_loginPage(struct loginPage* page)
 void destroy_loginPage(struct loginPage* page)
 {
     remove_jpegPic_direct(page->bg_jpeg_picture);
+
+    remove_blankButton_direct(page->inputBox_account_button);
+    remove_blankButton_direct(page->inputBox_password_button);
+
+    remove_bmpButton_direct(page->login_button);
+    remove_bmpButton_direct(page->regist_button);
+    remove_bmpButton_direct(page->fork_account_button);
+    remove_bmpButton_direct(page->fork_password_button);
+    for (int i = 0; i <= 9; i++) {
+        remove_bmpButton_direct(page->number_button[i]);
+    }
+
     free(page);
 }
 
@@ -247,9 +259,6 @@ void registButton_action()
     if (strlen(store_account_str) > 0 && strlen(store_password_str) > 0) {
         accountInfo_t* new_node = request_account_node(store_account_str, store_password_str);
         insert_account_node(new_node, account_list_head);
-
-        memset(store_account_str, 0, sizeof(store_account_str));
-        memset(store_password_str, 0, sizeof(store_password_str));
 
         painter_clear_range(-65 - 25, -200 - 25, 50 * 5, 50 * 2);
         painter_draw_str(-65, -200, 50, "注册成功!");

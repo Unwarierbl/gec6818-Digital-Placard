@@ -68,8 +68,8 @@ void touchScreen_update_data()
 
 
             switch (ts_status_data.touch_status) {
-            case PRESS: ts_status_data.press_cord = ts_status_data.cur_touch_cord; break;
             case RELEASE: ts_status_data.release_cord = ts_status_data.cur_touch_cord; break;
+            case PRESS: ts_status_data.press_cord = ts_status_data.cur_touch_cord;
             case HOLD:
                 if (judge_hold_or_slide()) {
                     ts_status_data.touch_status = SLIDE;
@@ -87,14 +87,22 @@ void touchScreen_update_data()
     else {                                       // 并没有检测 rd_size 为负数时的情况
         switch (ts_status_data.touch_status) {   // 无输入时通过前向状态确定当前状态
         case RELEASE:
-            ts_status_data.touch_status = NO_TOUCH;
-            ts_status_data.slide_status = NO_SLIDE;
+            ts_status_data.touch_status   = NO_TOUCH;
+            ts_status_data.slide_status   = NO_SLIDE;
+            ts_status_data.slide_offset.x = 0;
+            ts_status_data.slide_offset.y = 0;
             break;
         case PRESS: ts_status_data.touch_status = HOLD; break;
 
         default: break;
         }
     }
+
+    // printf("touch status:%d,slide status:%d,slide offset:(%d,%d)\n",
+    //        ts_status_data.touch_status,
+    //        ts_status_data.slide_status,
+    //        ts_status_data.slide_offset.x,
+    //        ts_status_data.slide_offset.y);
 }
 
 int judge_hold_or_slide()
@@ -119,6 +127,8 @@ void update_touch_slide_status()
             ts_status_data.slide_status &= ~SLIDE_RIGHT;
             ts_status_data.slide_status |= SLIDE_LEFT;
         }
+        ts_status_data.slide_offset.x =
+            ts_status_data.cur_touch_cord.x - ts_status_data.pre_touch_cord.x;
     }
     else if (abs(ts_status_data.cur_touch_cord.y - ts_status_data.pre_touch_cord.y) >= 3) {
         if (ts_status_data.cur_touch_cord.y > ts_status_data.pre_touch_cord.y) {
@@ -129,9 +139,13 @@ void update_touch_slide_status()
             ts_status_data.slide_status &= ~SLIDE_DOWN;
             ts_status_data.slide_status |= SLIDE_UP;
         }
+        ts_status_data.slide_offset.y =
+            ts_status_data.cur_touch_cord.y - ts_status_data.pre_touch_cord.y;
     }
     else {
-        ts_status_data.slide_status = NO_SLIDE;
+        ts_status_data.slide_status   = NO_SLIDE;
+        ts_status_data.slide_offset.x = 0;
+        ts_status_data.slide_offset.y = 0;
     }
 }
 

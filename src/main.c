@@ -34,5 +34,6 @@ int main(void)
         default: cur_page = NO_PAGE; break;
         }
     }
+
     destroy_loginPage(login_page);
 }
