@@ -34,10 +34,10 @@ void init_bmpTimeDisplayer(struct bmpTimeDisplayer* displayer)
     displayer->initiate_time = system_initiate_time;
     displayer->cur_real_time = system_initiate_time;
 
-    printf("year=%d,mount=%d,day=%d\n",
-           displayer->initiate_time.tm_year,
-           displayer->initiate_time.tm_mon + 1,
-           displayer->initiate_time.tm_mday);
+    // printf("year=%d,mount=%d,day=%d\n",
+    //        displayer->initiate_time.tm_year,
+    //        displayer->initiate_time.tm_mon + 1,
+    //        displayer->initiate_time.tm_mday);
 
     displayer->start_time = time(NULL);
     displayer->cur_time   = time(NULL);
@@ -246,7 +246,7 @@ void bmpTimeDisplayer_draw(struct bmpTimeDisplayer* draw_displayer)
 
         painter_clear_range(draw_displayer->center_cord.x - draw_displayer->whole_width / 2,
                             draw_displayer->center_cord.y - draw_displayer->whole_height / 2,
-                            draw_displayer->whole_width,
+                            draw_displayer->whole_width + 30,
                             draw_displayer->whole_height);
 
         int left_x;
@@ -408,8 +408,8 @@ void bmpTimeDisplayer_update(struct bmpTimeDisplayer* draw_displayer, int delta_
         int diff_min  = ((int)draw_displayer->cur_tick_time % 3600) / 60;
         int diff_sec  = ((int)draw_displayer->cur_tick_time % 60);
 
-        printf("cur tick time=%f\n", draw_displayer->cur_tick_time);
-        printf("diff hour=%d,min=%d,sec=%d\n", diff_hour, diff_min, diff_sec);
+        // printf("cur tick time=%f\n", draw_displayer->cur_tick_time);
+        // printf("diff hour=%d,min=%d,sec=%d\n", diff_hour, diff_min, diff_sec);
 
         // draw_displayer->cur_real_time.tm_sec  = draw_displayer->initiate_time.tm_sec + diff_sec;
         // draw_displayer->cur_real_time.tm_min  = draw_displayer->initiate_time.tm_min + diff_min;
@@ -419,10 +419,10 @@ void bmpTimeDisplayer_update(struct bmpTimeDisplayer* draw_displayer, int delta_
         draw_displayer->cur_real_time.tm_min  = draw_displayer->initiate_time.tm_min;
         draw_displayer->cur_real_time.tm_hour = draw_displayer->initiate_time.tm_hour;
 
-        printf("initiate time:%d,%d,%d\n",
-               draw_displayer->initiate_time.tm_hour,
-               draw_displayer->initiate_time.tm_min,
-               draw_displayer->initiate_time.tm_sec);
+        // printf("initiate time:%d,%d,%d\n",
+        //        draw_displayer->initiate_time.tm_hour,
+        //        draw_displayer->initiate_time.tm_min,
+        //        draw_displayer->initiate_time.tm_sec);
 
 
         draw_displayer->cur_real_time.tm_sec += diff_sec;
@@ -446,9 +446,9 @@ void bmpTimeDisplayer_update(struct bmpTimeDisplayer* draw_displayer, int delta_
         draw_displayer->cur_real_time.tm_hour += diff_hour;
         if (draw_displayer->cur_real_time.tm_hour >= 24) draw_displayer->cur_real_time.tm_hour = 0;
 
-        printf("cur real time:%d:%d:%d\n",
-               draw_displayer->cur_real_time.tm_hour,
-               draw_displayer->cur_real_time.tm_min,
-               draw_displayer->cur_real_time.tm_sec);
+        // printf("cur real time:%d:%d:%d\n",
+        //        draw_displayer->cur_real_time.tm_hour,
+        //        draw_displayer->cur_real_time.tm_min,
+        //        draw_displayer->cur_real_time.tm_sec);
     }
 }
