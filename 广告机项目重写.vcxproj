@@ -90,6 +90,7 @@
     <ClCompile Include="src\def\device\frameBuffer.c" />
     <ClCompile Include="src\def\device\touchScreen.c" />
     <ClCompile Include="src\def\module\blankButton.c" />
+    <ClCompile Include="src\def\module\blankSlider.c" />
     <ClCompile Include="src\def\module\bmpButton.c" />
     <ClCompile Include="src\def\module\bmpGifList.c" />
     <ClCompile Include="src\def\module\bmpPicture.c" />
@@ -113,6 +114,7 @@
     <ClInclude Include="src\dec\device\frameBuffer.h" />
     <ClInclude Include="src\dec\device\touchScreen.h" />
     <ClInclude Include="src\dec\module\blankButton.h" />
+    <ClInclude Include="src\dec\module\blankSlider.h" />
     <ClInclude Include="src\dec\module\bmpButton.h" />
     <ClInclude Include="src\dec\module\bmpGifList.h" />
     <ClInclude Include="src\dec\module\bmpPicture.h" />

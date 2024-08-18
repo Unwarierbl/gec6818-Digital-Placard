@@ -14,7 +14,7 @@ struct bmpSlidePicList
     int cur_display_order;   // ok
 
     touchStatusData cur_touch_status_data;
-    touchStatusData pre_touch_status_data;
+    // touchStatusData pre_touch_status_data;
 
     char          pic_path[128];
     unsigned int* pic_buffer;
@@ -45,7 +45,7 @@ void bmpSlidePicList_load_pic(struct bmpSlidePicList* bmp_node);   // ok
 
 void bmpSlidePicList_draw(struct bmpSlidePicList* head_node);
 
-void bmpSlidePicList_analyze_touch(struct bmpSlidePicList* head_node,
+void bmpSlidePicList_analyze_touch(struct bmpSlidePicList* head_node,   // ok
                                    touchStatusData         touchScreen_data);
 
 

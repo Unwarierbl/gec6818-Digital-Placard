@@ -249,7 +249,7 @@ void loginButton_action()
         memset(store_account_str, 0, sizeof(store_account_str));
         memset(store_password_str, 0, sizeof(store_password_str));
 
-        sleep(2);
+        // sleep(2);
         *store_page_order_addr = DESKTOP_PAGE;
     }
 }
