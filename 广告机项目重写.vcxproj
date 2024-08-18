@@ -92,6 +92,7 @@
     <ClCompile Include="src\def\module\blankButton.c" />
     <ClCompile Include="src\def\module\bmpButton.c" />
     <ClCompile Include="src\def\module\bmpGifList.c" />
+    <ClCompile Include="src\def\module\bmpPicture.c" />
     <ClCompile Include="src\def\module\bmpTimeDisplayer.c" />
     <ClCompile Include="src\def\module\jpegPicture.c" />
     <ClCompile Include="src\def\page\desktopPage.c" />
@@ -113,6 +114,7 @@
     <ClInclude Include="src\dec\module\blankButton.h" />
     <ClInclude Include="src\dec\module\bmpButton.h" />
     <ClInclude Include="src\dec\module\bmpGifList.h" />
+    <ClInclude Include="src\dec\module\bmpPicture.h" />
     <ClInclude Include="src\dec\module\bmpTimeDisplayer.h" />
     <ClInclude Include="src\dec\module\jpegPicture.h" />
     <ClInclude Include="src\dec\page\desktopPage.h" />

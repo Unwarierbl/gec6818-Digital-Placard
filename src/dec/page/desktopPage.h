@@ -4,6 +4,7 @@
 // #include "decTypes.h"
 
 struct jpegPicture;
+struct bmpPicture;
 struct bmpButton;
 struct blankButton;
 struct bmpTimeDisplayer;
@@ -16,9 +17,12 @@ struct desktopPage
 {
     struct jpegPicture* bg_jpeg_picture;   // ok
 
+    struct bmpPicture* bg_bmp_weather_1;
+    struct bmpPicture* bg_bmp_weather_2;
+
     struct bmpTimeDisplayer* time_displayer;   // ok
 
-    struct bmpGifList* advert1_head_node;
+    struct bmpGifList* advert1_head_node;   // ok
 };
 
 struct desktopPage* request_desktopPage_direct();

@@ -12,6 +12,7 @@
 #include "module/blankButton.h"
 #include "module/bmpTimeDisplayer.h"
 #include "module/bmpGifList.h"
+#include "module/bmpPicture.h"
 
 #include "accountInfo.h"
 
@@ -43,6 +44,19 @@ void init_desktopPage(struct desktopPage* page)
     page->bg_jpeg_picture = request_jpegPic_direct();
     jpegPic_set_pic_path(page->bg_jpeg_picture, "res/bg_2.jpg");
     jpegPic_load_pic(page->bg_jpeg_picture);
+
+    page->bg_bmp_weather_1                = request_bmpPicture_direct();
+    page->bg_bmp_weather_1->center_cord.x = -280;
+    page->bg_bmp_weather_1->center_cord.y = 90;
+    bmpPicture_set_pic_path(page->bg_bmp_weather_1, "res/weather_font/weather_0.bmp");
+    bmpPicture_load_pic(page->bg_bmp_weather_1);
+
+
+    page->bg_bmp_weather_2                = request_bmpPicture_direct();
+    page->bg_bmp_weather_2->center_cord.x = -250;
+    page->bg_bmp_weather_2->center_cord.y = 180;
+    bmpPicture_set_pic_path(page->bg_bmp_weather_2, "res/weather_font/weather_4.bmp");
+    bmpPicture_load_pic(page->bg_bmp_weather_2);
 
     page->time_displayer                = request_bmpTimeDisplayer_direct();
     page->time_displayer->center_cord.x = 100;
@@ -86,7 +100,13 @@ void run_desktopPage(struct desktopPage* page, enum PAGE* page_order_addr)
     store_page_order_addr = page_order_addr;
 
     jpegPic_draw(page->bg_jpeg_picture);
+    frameBuffer_display_frame();
+    frameBuffer_set_bg_as_cur_display();
 
+    bmpPicture_draw(page->bg_bmp_weather_1);
+    frameBuffer_display_frame();
+    frameBuffer_set_bg_as_cur_display();
+    bmpPicture_draw(page->bg_bmp_weather_2);
     frameBuffer_display_frame();
     frameBuffer_set_bg_as_cur_display();
 
