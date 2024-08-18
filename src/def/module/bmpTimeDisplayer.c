@@ -23,7 +23,7 @@ struct bmpTimeDisplayer* request_bmpTimeDisplayer_direct()
 
 void init_bmpTimeDisplayer(struct bmpTimeDisplayer* displayer)
 {
-    printf("timer init run\n");
+    // printf("timer init run\n");
 
     displayer->center_cord.x = 0;
     displayer->center_cord.y = 0;
@@ -42,8 +42,8 @@ void init_bmpTimeDisplayer(struct bmpTimeDisplayer* displayer)
     displayer->start_time = time(NULL);
     displayer->cur_time   = time(NULL);
 
-    displayer->cur_tick_time = difftime(displayer->start_time, displayer->cur_time);
-    displayer->cur_tick_time = displayer->cur_tick_time;
+    displayer->cur_tick_time = difftime(displayer->cur_time, displayer->start_time);
+    displayer->pre_tick_time = displayer->cur_tick_time;
 
 
     for (int i = 0; i <= 6; i++) {
@@ -177,8 +177,8 @@ void bmpTimeDisplayer_load_pic(struct bmpTimeDisplayer* displayer)
                 if (displayer->font_pic_max_length.y < height) {
                     displayer->font_pic_max_length.y = height;
                 }
-                printf("number:%d,width=%d\n", i, width);
-                printf("number cur max width=%d\n", displayer->number_pic_max_length.x);
+                // printf("number:%d,width=%d\n", i, width);
+                // printf("number cur max width=%d\n", displayer->number_pic_max_length.x);
 
                 // 因为是32bit所以无所谓
                 int line_width = (width + 3) / 4 * 4;
@@ -230,10 +230,10 @@ void bmpTimeDisplayer_load_pic(struct bmpTimeDisplayer* displayer)
 
     displayer->whole_height = displayer->pic_max_height * 2 + 20;
 
-    printf("max font width:%d,max number width:%d\n",
-           displayer->font_pic_max_length.x,
-           displayer->number_pic_max_length.x);
-    printf("whole width=%d,whole height=%d\n", displayer->whole_width, displayer->whole_height);
+    // printf("max font width:%d,max number width:%d\n",
+    //        displayer->font_pic_max_length.x,
+    //        displayer->number_pic_max_length.x);
+    // printf("whole width=%d,whole height=%d\n", displayer->whole_width, displayer->whole_height);
 }
 
 
@@ -242,7 +242,7 @@ void bmpTimeDisplayer_draw(struct bmpTimeDisplayer* draw_displayer)
     if (draw_displayer->need_redraw == true) {
         draw_displayer->need_redraw = false;
 
-        printf("timer drawing\n");
+        // printf("timer drawing\n");
 
         painter_clear_range(draw_displayer->center_cord.x - draw_displayer->whole_width / 2,
                             draw_displayer->center_cord.y - draw_displayer->whole_height / 2,
@@ -263,15 +263,14 @@ void bmpTimeDisplayer_draw(struct bmpTimeDisplayer* draw_displayer)
         int mount = draw_displayer->initiate_time.tm_mon + 1;
         int day   = draw_displayer->initiate_time.tm_mday;
 
-        printf("year=%d,mon=%d,day=%d\n", year, mount, day);
+        // printf("year=%d,mon=%d,day=%d\n", year, mount, day);
 
         int cur_left_x = left_x;
-        printf("1\n");
         for (int i = 0; i <= 1; i++) {
-            printf("year i=%d:%d\n", i, year / ((i == 0) ? 10 : 1) % 10);
-            printf("width=%d,height=%d\n",
-                   draw_displayer->number_pic_length[year / ((i == 0) ? 10 : 1) % 10].x,
-                   draw_displayer->number_pic_length[year / ((i == 0) ? 10 : 1) % 10].y);
+            // printf("year i=%d:%d\n", i, year / ((i == 0) ? 10 : 1) % 10);
+            // printf("width=%d,height=%d\n",
+            //        draw_displayer->number_pic_length[year / ((i == 0) ? 10 : 1) % 10].x,
+            //        draw_displayer->number_pic_length[year / ((i == 0) ? 10 : 1) % 10].y);
             painter_draw_ARGB_pic(
                 draw_displayer->number_pic_buffer[year / ((i == 0) ? 10 : 1) % 10],
                 cur_left_x,
@@ -282,7 +281,6 @@ void bmpTimeDisplayer_draw(struct bmpTimeDisplayer* draw_displayer)
 
             cur_left_x += draw_displayer->number_pic_max_length.x + 5;
         }
-        printf("1.5\n");
         painter_draw_ARGB_pic(draw_displayer->font_pic_buffer[0],
                               cur_left_x,
                               left_up_center_y - draw_displayer->font_pic_length[0].y / 2,
@@ -291,7 +289,6 @@ void bmpTimeDisplayer_draw(struct bmpTimeDisplayer* draw_displayer)
         cur_left_x += draw_displayer->font_pic_max_length.x + 5;
 
 
-        printf("2\n");
 
         for (int i = 0; i <= 1; i++) {
             painter_draw_ARGB_pic(
@@ -311,7 +308,6 @@ void bmpTimeDisplayer_draw(struct bmpTimeDisplayer* draw_displayer)
                               draw_displayer->font_pic_length[1].y);
         cur_left_x += draw_displayer->font_pic_max_length.x + 5;
 
-        printf("3\n");
 
 
         for (int i = 0; i <= 1; i++) {
@@ -400,9 +396,11 @@ void bmpTimeDisplayer_update(struct bmpTimeDisplayer* draw_displayer, int delta_
 
     draw_displayer->cur_time = time(NULL);
 
-    draw_displayer->cur_tick_time = difftime(draw_displayer->start_time, draw_displayer->cur_time);
+    draw_displayer->cur_tick_time = difftime(draw_displayer->cur_time, draw_displayer->start_time);
+    // printf("cur tick time=%f\n", draw_displayer->cur_tick_time);
+    // printf("pre tick time=%f\n", draw_displayer->pre_tick_time);
     if (draw_displayer->cur_tick_time - draw_displayer->pre_tick_time >= 1.0f) {
-        printf("timer updating\n");
+        // printf("timer updating\n");
         draw_displayer->need_redraw   = true;
         draw_displayer->pre_tick_time = draw_displayer->cur_tick_time;
 
@@ -410,25 +408,47 @@ void bmpTimeDisplayer_update(struct bmpTimeDisplayer* draw_displayer, int delta_
         int diff_min  = ((int)draw_displayer->cur_tick_time % 3600) / 60;
         int diff_sec  = ((int)draw_displayer->cur_tick_time % 60);
 
+        printf("cur tick time=%f\n", draw_displayer->cur_tick_time);
+        printf("diff hour=%d,min=%d,sec=%d\n", diff_hour, diff_min, diff_sec);
+
+        // draw_displayer->cur_real_time.tm_sec  = draw_displayer->initiate_time.tm_sec + diff_sec;
+        // draw_displayer->cur_real_time.tm_min  = draw_displayer->initiate_time.tm_min + diff_min;
+        // draw_displayer->cur_real_time.tm_hour = draw_displayer->initiate_time.tm_hour +
+        // diff_hour;
+        draw_displayer->cur_real_time.tm_sec  = draw_displayer->initiate_time.tm_sec;
+        draw_displayer->cur_real_time.tm_min  = draw_displayer->initiate_time.tm_min;
+        draw_displayer->cur_real_time.tm_hour = draw_displayer->initiate_time.tm_hour;
+
+        printf("initiate time:%d,%d,%d\n",
+               draw_displayer->initiate_time.tm_hour,
+               draw_displayer->initiate_time.tm_min,
+               draw_displayer->initiate_time.tm_sec);
+
+
         draw_displayer->cur_real_time.tm_sec += diff_sec;
         if (draw_displayer->cur_real_time.tm_sec >= 60) {
-            draw_displayer->cur_real_time.tm_sec = 0;
+            draw_displayer->cur_real_time.tm_sec %= 60;
             draw_displayer->cur_real_time.tm_min += 1;
             if (draw_displayer->cur_real_time.tm_min >= 60) {
-                draw_displayer->cur_real_time.tm_min = 0;
+                draw_displayer->cur_real_time.tm_min %= 60;
                 draw_displayer->cur_real_time.tm_hour += 1;
                 if (draw_displayer->cur_real_time.tm_hour >= 24)
-                    draw_displayer->cur_real_time.tm_hour = 0;
+                    draw_displayer->cur_real_time.tm_hour %= 24;
             }
         }
-        draw_displayer->cur_real_time.tm_min = diff_min;
+        draw_displayer->cur_real_time.tm_min += diff_min;
         if (draw_displayer->cur_real_time.tm_min >= 60) {
-            draw_displayer->cur_real_time.tm_min = 0;
+            draw_displayer->cur_real_time.tm_min %= 60;
             draw_displayer->cur_real_time.tm_hour += 1;
             if (draw_displayer->cur_real_time.tm_hour >= 24)
-                draw_displayer->cur_real_time.tm_hour = 0;
+                draw_displayer->cur_real_time.tm_hour %= 24;
         }
         draw_displayer->cur_real_time.tm_hour += diff_hour;
         if (draw_displayer->cur_real_time.tm_hour >= 24) draw_displayer->cur_real_time.tm_hour = 0;
+
+        printf("cur real time:%d:%d:%d\n",
+               draw_displayer->cur_real_time.tm_hour,
+               draw_displayer->cur_real_time.tm_min,
+               draw_displayer->cur_real_time.tm_sec);
     }
 }

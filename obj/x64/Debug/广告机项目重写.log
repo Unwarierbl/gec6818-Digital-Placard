@@ -5,6 +5,20 @@
   正在验证体系结构
   正在启动远程生成
   正在编译源:
-  desktopPage.c
+  bmpTimeDisplayer.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(94): warning : conversion to 'int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(113): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(117): warning : conversion to 'long int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(118): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(119): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(120): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(136): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(165): warning : conversion to 'int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(187): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(191): warning : conversion to 'long int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(192): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(193): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(194): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(210): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
   正在链接对象
   广告机项目重写.vcxproj -> D:\HelloWorld\c++\粤嵌\广告机项目重写\bin\x64\Debug\DigitalBoard2.out

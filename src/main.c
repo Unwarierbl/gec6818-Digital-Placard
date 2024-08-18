@@ -25,9 +25,21 @@ int main(int argc, char** argv)
     system_initiate_time.tm_mday = 18;
 
     if (argc == 4) {
-        system_initiate_time.tm_hour = argv[1][0] + (argv[1][1] != '\0') ? argv[1][1] * 10 : 0;
-        system_initiate_time.tm_min  = argv[2][0] + (argv[2][1] != '\0') ? argv[2][1] * 10 : 0;
-        system_initiate_time.tm_sec == argv[3][0] + (argv[3][1] != '\0') ? argv[3][1] * 10 : 0;
+        system_initiate_time.tm_hour = (argv[1][1] == '\0')
+                                           ? (argv[1][0] - '0')
+                                           : (argv[1][0] - '0') * 10 + (argv[1][1] - '0');
+        system_initiate_time.tm_min  = (argv[2][1] == '\0')
+                                           ? (argv[2][0] - '0')
+                                           : (argv[2][0] - '0') * 10 + (argv[2][1] - '0');
+        system_initiate_time.tm_sec  = (argv[3][1] == '\0')
+                                           ? (argv[3][0] - '0')
+                                           : (argv[3][0] - '0') * 10 + (argv[3][1] - '0');
+
+        printf("%s %s %s\n", argv[1], argv[2], argv[3]);
+        printf("%d %d %d\n",
+               system_initiate_time.tm_hour,
+               system_initiate_time.tm_min,
+               system_initiate_time.tm_sec);
     }
     else {
         system_initiate_time.tm_hour = 10;
