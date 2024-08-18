@@ -5,6 +5,14 @@
   正在验证体系结构
   正在启动远程生成
   正在编译源:
-  desktopPage.c
+  bmpSlidePicList.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(58): warning : unused variable 'whole_pic_numb'
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(91): warning : conversion to 'int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(106): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(110): warning : conversion to 'long int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(111): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(112): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(113): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(130): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
   正在链接对象
   广告机项目重写.vcxproj -> D:\HelloWorld\c++\粤嵌\广告机项目重写\bin\x64\Debug\DigitalBoard2.out

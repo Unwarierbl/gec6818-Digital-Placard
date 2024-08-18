@@ -45,8 +45,8 @@ void bmpSlidePicList_load_pic(struct bmpSlidePicList* bmp_node);   // ok
 
 void bmpSlidePicList_draw(struct bmpSlidePicList* head_node);
 
-// void bmpSlidePicList_analyze_touch(struct bmpSlidePicList* head_node,
-//                                    touchStatusData         touchScreen_data);
+void bmpSlidePicList_analyze_touch(struct bmpSlidePicList* head_node,
+                                   touchStatusData         touchScreen_data);
 
 
 

@@ -165,3 +165,65 @@ void bmpSlidePicList_draw(struct bmpSlidePicList* head_node)
         head_node->need_redraw = false;
     }
 }
+
+
+void bmpSlidePicList_analyze_touch(struct bmpSlidePicList* head_node,
+                                   touchStatusData         touchScreen_data)
+{
+    vec2 touch_cord = touchScreen_data.cur_touch_cord;
+
+    switch (touchScreen_data.touch_status) {
+    case PRESS:
+        if (touch_cord.x >= head_node->center_cord.x - head_node->image_width / 2 &&
+            touch_cord.x <= head_node->center_cord.x + head_node->image_width / 2 &&
+            touch_cord.y >= head_node->center_cord.y - head_node->image_height / 2 &&
+            touch_cord.y <= head_node->center_cord.y + head_node->image_height / 2) {
+
+            head_node->cur_touch_status_data.touch_status = PRESS;
+        }
+        break;
+    case SLIDE:
+        // printf("case slide,slide status=%d\n", touchScreen_data.slide_status);
+
+        if (head_node->cur_touch_status_data.touch_status == PRESS) {
+            if ((touchScreen_data.slide_status & SLIDE_LEFT) == SLIDE_LEFT) {
+                head_node->cur_touch_status_data.touch_status = SLIDE;
+                head_node->cur_touch_status_data.slide_status = SLIDE_LEFT;
+
+                head_node->cur_display_order -= 1;
+                if (head_node->cur_display_order < 1) {
+                    head_node->cur_display_order =
+                        list_entry(head_node->list_node.prev, struct bmpSlidePicList, list_node)
+                            ->order;
+                }
+            }
+            else if ((touchScreen_data.slide_status & SLIDE_RIGHT) == SLIDE_RIGHT) {
+                head_node->cur_touch_status_data.touch_status = SLIDE;
+                head_node->cur_touch_status_data.slide_status = SLIDE_RIGHT;
+
+                head_node->cur_display_order += 1;
+                if (head_node->cur_display_order >
+                    list_entry(head_node->list_node.prev, struct bmpSlidePicList, list_node)
+                        ->order) {
+                    head_node->cur_display_order = 1;
+                }
+            }
+            break;
+
+
+        case RELEASE:
+            if (head_node->cur_touch_status_data.touch_status == SLIDE) {
+                if (touch_cord.x >= head_node->center_cord.x - head_node->image_width / 2 &&
+                    touch_cord.x <= head_node->center_cord.x + head_node->image_width / 2 &&
+                    touch_cord.y >= head_node->center_cord.y - head_node->image_height / 2 &&
+                    touch_cord.y <= head_node->center_cord.y + head_node->image_height / 2) {
+
+
+                    head_node->need_redraw = true;
+                }
+            }
+            break;
+        default: break;
+        }
+    }
+}

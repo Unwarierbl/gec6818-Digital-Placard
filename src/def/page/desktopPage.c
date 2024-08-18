@@ -154,6 +154,7 @@ void run_desktopPage(struct desktopPage* page, enum PAGE* page_order_addr)
             bmpGifList_update(page->advert1_head_node, delta_time);
             bmpGifList_draw(page->advert1_head_node);
 
+            bmpSlidePicList_analyze_touch(page->slide_announce_head_node, get_touch_status_data());
             bmpSlidePicList_draw(page->slide_announce_head_node);
         }
         frameBuffer_display_frame();
