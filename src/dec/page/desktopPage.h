@@ -22,6 +22,8 @@ struct desktopPage
     struct bmpPicture* bg_bmp_weather_1;   // ok
     struct bmpPicture* bg_bmp_weather_2;   // ok
 
+    struct bmpButton* shutdown_button;
+
     struct bmpTimeDisplayer* time_displayer;   // ok
 
     struct bmpGifList* advert_head_node[3];   // ok
@@ -44,5 +46,6 @@ void advert_slider_handle_slide(struct blankSlider* slider, touchStatusData touc
 
 void advert_slider_handle_slide(struct blankSlider* slider, touchStatusData touchScreen_data);
 
+// void shutdown_button_action();
 
 #endif

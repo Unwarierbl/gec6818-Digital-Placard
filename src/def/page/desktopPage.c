@@ -60,9 +60,17 @@ void init_desktopPage(struct desktopPage* page)
 
     page->bg_bmp_weather_2                = request_bmpPicture_direct();
     page->bg_bmp_weather_2->center_cord.x = -250;
-    page->bg_bmp_weather_2->center_cord.y = 180;
+    page->bg_bmp_weather_2->center_cord.y = 190;
     bmpPicture_set_pic_path(page->bg_bmp_weather_2, "res/weather_font/weather_4.bmp");
     bmpPicture_load_pic(page->bg_bmp_weather_2);
+
+    page->shutdown_button                = request_bmpButton_direct();
+    page->shutdown_button->center_cord.x = -340;
+    page->shutdown_button->center_cord.y = 190;
+    bmpButton_set_release_pic_path(page->shutdown_button, "res/button/shutdown_1.bmp");
+    bmpButton_set_press_pic_path(page->shutdown_button, "res/button/shutdown_2.bmp");
+    bmpButton_load_pic(page->shutdown_button);
+
 
     page->time_displayer                = request_bmpTimeDisplayer_direct();
     page->time_displayer->center_cord.x = 100;
@@ -133,7 +141,7 @@ void init_desktopPage(struct desktopPage* page)
     page->slide_announce_head_node                = request_bmpSlidePicList_node_direct();
     page->slide_announce_head_node->center_cord.x = 200;
     page->slide_announce_head_node->center_cord.y = -100;
-    for (int i = 1; i <= 5; i++) {
+    for (int i = 1; i <= 8; i++) {
         char temp_path_str[128];
         memset(temp_path_str, 0, sizeof(temp_path_str));
 
@@ -200,6 +208,9 @@ void run_desktopPage(struct desktopPage* page, enum PAGE* page_order_addr)
 
             touchScreen_listen();
             touchScreen_update_data();
+
+            bmpButton_analyze_touch(page->shutdown_button, get_touch_status_data());
+            bmpButton_draw(page->shutdown_button);
 
 
             bmpTimeDisplayer_update(page->time_displayer, delta_time);
