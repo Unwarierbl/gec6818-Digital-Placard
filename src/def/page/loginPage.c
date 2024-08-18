@@ -282,12 +282,14 @@ void registButton_action()
 void fork_account_action()
 {
     account_numbs = 0;
+    memset(store_account_str, 0, sizeof(store_account_str));
     painter_draw_rectangle(-75, -100, 250, 50, White);
 }
 
 void fork_password_action()
 {
     password_numbs = 0;
+    memset(store_password_str, 0, sizeof(store_password_str));
     painter_draw_rectangle(-75, -25, 250, 50, White);
 }
 

@@ -13,6 +13,7 @@
 #include "module/bmpTimeDisplayer.h"
 #include "module/bmpGifList.h"
 #include "module/bmpPicture.h"
+#include "module/bmpSlidePicList.h"
 
 #include "accountInfo.h"
 
@@ -87,6 +88,23 @@ void init_desktopPage(struct desktopPage* page)
         bmpGifList_load_pic(temp_bmp_node);
         insert_bmpGifList_node(page->advert1_head_node, temp_bmp_node);
     }
+
+
+    page->slide_announce_head_node                = request_bmpSlidePicList_node_direct();
+    page->slide_announce_head_node->center_cord.x = 200;
+    page->slide_announce_head_node->center_cord.y = -100;
+    for (int i = 1; i <= 5; i++) {
+        char temp_path_str[128];
+        memset(temp_path_str, 0, sizeof(temp_path_str));
+
+        struct bmpSlidePicList* temp_slideBmp_node = request_bmpSlidePicList_node_direct();
+
+        sprintf(temp_path_str, "res/album/album_%d.bmp", i);
+        bmpSlidePicList_set_pic_path(temp_slideBmp_node, temp_path_str);
+
+        bmpSlidePicList_load_pic(temp_slideBmp_node);
+        insert_bmpSlidePicList_node(page->slide_announce_head_node, temp_slideBmp_node);
+    }
 }
 
 void destroy_desktopPage(struct desktopPage* page)
@@ -126,11 +144,17 @@ void run_desktopPage(struct desktopPage* page, enum PAGE* page_order_addr)
             }
             ts1 = ts2;
 
+            touchScreen_listen();
+            touchScreen_update_data();
+
+
             bmpTimeDisplayer_update(page->time_displayer, delta_time);
             bmpTimeDisplayer_draw(page->time_displayer);
 
             bmpGifList_update(page->advert1_head_node, delta_time);
             bmpGifList_draw(page->advert1_head_node);
+
+            bmpSlidePicList_draw(page->slide_announce_head_node);
         }
         frameBuffer_display_frame();
     } while (*page_order_addr == DESKTOP_PAGE);

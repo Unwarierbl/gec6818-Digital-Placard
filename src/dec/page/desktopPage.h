@@ -9,6 +9,7 @@ struct bmpButton;
 struct blankButton;
 struct bmpTimeDisplayer;
 struct bmpGifList;
+struct bmpSlidePicList;
 
 enum PAGE;
 
@@ -17,12 +18,14 @@ struct desktopPage
 {
     struct jpegPicture* bg_jpeg_picture;   // ok
 
-    struct bmpPicture* bg_bmp_weather_1;
-    struct bmpPicture* bg_bmp_weather_2;
+    struct bmpPicture* bg_bmp_weather_1;   // ok
+    struct bmpPicture* bg_bmp_weather_2;   // ok
 
     struct bmpTimeDisplayer* time_displayer;   // ok
 
     struct bmpGifList* advert1_head_node;   // ok
+
+    struct bmpSlidePicList* slide_announce_head_node;
 };
 
 struct desktopPage* request_desktopPage_direct();
