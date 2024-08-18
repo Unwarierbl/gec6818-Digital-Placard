@@ -56,8 +56,9 @@ int main(int argc, char** argv)
     init_frameBuffer_device();
     init_painter();
 
-    login_page   = request_loginPage_direct();
     desktop_page = request_desktopPage_direct();
+    login_page   = request_loginPage_direct();
+
 
 
     while (cur_page != NO_PAGE) {
@@ -66,7 +67,6 @@ int main(int argc, char** argv)
             init_loginPage(login_page);
             run_loginPage(login_page, &cur_page);
             break;
-
         case DESKTOP_PAGE:
             init_desktopPage(desktop_page);
             run_desktopPage(desktop_page, &cur_page);
@@ -75,6 +75,6 @@ int main(int argc, char** argv)
         }
     }
 
-    destroy_loginPage(login_page);
-    destroy_desktopPage(desktop_page);
+    // destroy_loginPage(login_page);
+    // destroy_desktopPage(desktop_page);
 }

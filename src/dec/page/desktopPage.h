@@ -28,7 +28,7 @@ struct desktopPage
 
     struct bmpGifList* advert_head_node[3];   // ok
 
-    struct blankSlider* advert_slider;
+    struct blankSlider* advert_slider;   // ok
 
     struct bmpSlidePicList* slide_announce_head_node;   // ok
 };
@@ -46,6 +46,6 @@ void advert_slider_handle_slide(struct blankSlider* slider, touchStatusData touc
 
 void advert_slider_handle_slide(struct blankSlider* slider, touchStatusData touchScreen_data);
 
-// void shutdown_button_action();
+void shutdown_button_action();
 
 #endif

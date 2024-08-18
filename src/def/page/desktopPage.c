@@ -64,9 +64,10 @@ void init_desktopPage(struct desktopPage* page)
     bmpPicture_set_pic_path(page->bg_bmp_weather_2, "res/weather_font/weather_4.bmp");
     bmpPicture_load_pic(page->bg_bmp_weather_2);
 
-    page->shutdown_button                = request_bmpButton_direct();
-    page->shutdown_button->center_cord.x = -340;
-    page->shutdown_button->center_cord.y = 190;
+    page->shutdown_button                 = request_bmpButton_direct();
+    page->shutdown_button->center_cord.x  = -340;
+    page->shutdown_button->center_cord.y  = 190;
+    page->shutdown_button->handle_release = shutdown_button_action;
     bmpButton_set_release_pic_path(page->shutdown_button, "res/button/shutdown_1.bmp");
     bmpButton_set_press_pic_path(page->shutdown_button, "res/button/shutdown_2.bmp");
     bmpButton_load_pic(page->shutdown_button);
@@ -162,10 +163,13 @@ void destroy_desktopPage(struct desktopPage* page)
     remove_bmpPicture_direct(page->bg_bmp_weather_1);
     remove_bmpPicture_direct(page->bg_bmp_weather_2);
 
+    remove_bmpButton_direct(page->shutdown_button);
+
     remove_bmpTimeDisplayer_direct(page->time_displayer);
 
     remove_all_bmpGifList_node(page->advert_head_node[0]);
     remove_all_bmpGifList_node(page->advert_head_node[1]);
+    remove_all_bmpGifList_node(page->advert_head_node[2]);
 
     remove_blankSlider_direct(page->advert_slider);
 
@@ -248,4 +252,10 @@ void advert_slider_handle_slide(struct blankSlider* slider, touchStatusData touc
     default: break;
     }
     // printf("advert choice=%d\n", advert_choice);
+}
+
+
+void shutdown_button_action()
+{
+    *store_page_order_addr = NO_PAGE;
 }
