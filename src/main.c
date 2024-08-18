@@ -1,5 +1,6 @@
 ﻿#include "page/loginPage.h"
 #include "page/desktopPage.h"
+#include "page/shutdownPage.h"
 
 #include "decTypes.h"
 
@@ -47,8 +48,9 @@ int main(int argc, char** argv)
         system_initiate_time.tm_sec  = 10;
     }
 
-    struct loginPage*   login_page;
-    struct desktopPage* desktop_page;
+    struct loginPage*    login_page;
+    struct desktopPage*  desktop_page;
+    struct shutdownPage* shutdown_page;
 
     enum PAGE cur_page = LOGIN_PAGE;
 
@@ -56,20 +58,22 @@ int main(int argc, char** argv)
     init_frameBuffer_device();
     init_painter();
 
-    desktop_page = request_desktopPage_direct();
-    login_page   = request_loginPage_direct();
+    desktop_page  = request_desktopPage_direct();
+    login_page    = request_loginPage_direct();
+    shutdown_page = request_shutdownPage_direct();
 
+    init_loginPage(login_page);
+    init_desktopPage(desktop_page);
+    init_shutdownPage(shutdown_page);
 
 
     while (cur_page != NO_PAGE) {
         switch (cur_page) {
-        case LOGIN_PAGE:
-            init_loginPage(login_page);
-            run_loginPage(login_page, &cur_page);
-            break;
-        case DESKTOP_PAGE:
-            init_desktopPage(desktop_page);
-            run_desktopPage(desktop_page, &cur_page);
+        case LOGIN_PAGE: run_loginPage(login_page, &cur_page); break;
+        case DESKTOP_PAGE: run_desktopPage(desktop_page, &cur_page); break;
+        case SHUTDOWN_PAGE:
+            printf("shut down page run\n");
+            run_shutdownPage(shutdown_page, &cur_page);
             break;
         default: cur_page = NO_PAGE; break;
         }

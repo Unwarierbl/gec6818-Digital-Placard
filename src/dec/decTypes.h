@@ -54,8 +54,10 @@ enum PAGE
 {
 
     NO_PAGE,
+    START_PAGE,
     LOGIN_PAGE,
     DESKTOP_PAGE,
+    SHUTDOWN_PAGE,
 
 };
 
@@ -93,8 +95,6 @@ typedef struct
     enum TOUCH_SLIDE_STATUS slide_status;
     vec2                    slide_offset;
 } touchStatusData;
-
-
 
 
 

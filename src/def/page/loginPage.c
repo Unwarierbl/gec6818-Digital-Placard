@@ -8,6 +8,7 @@
 #include "module/jpegPicture.h"
 #include "module/bmpButton.h"
 #include "module/blankButton.h"
+#include "module/bmpGifList.h"
 
 #include "accountInfo.h"
 
@@ -127,6 +128,36 @@ void init_loginPage(struct loginPage* page)
         bmpButton_set_press_pic_path(page->number_button[i], temp_path_str2);
         bmpButton_load_pic(page->number_button[i]);
     }
+
+
+
+    page->gif_shiyuyuyi_head_node                = request_bmpGifList_node_direct();
+    page->gif_shiyuyuyi_head_node->center_cord.x = -280;
+    page->gif_shiyuyuyi_head_node->center_cord.y = -100;
+    page->gif_shiyuyuyi_head_node->animFPS       = 1.0f / (FRAME_DELTA_TIME * 4.0f);
+    for (int i = 1; i <= 200; i++) {
+        char temp_path_str[128];
+        memset(temp_path_str, 0, sizeof(temp_path_str));
+
+        struct bmpGifList* temp_bmp_node = request_bmpGifList_node_direct();
+        if (i < 10) {
+            sprintf(temp_path_str, "res/shiyuyuyi/shiyuyuyi_out000%d.bmp", i);
+            bmpGifList_node_set_pic_path(temp_bmp_node, temp_path_str);
+        }
+        else if (i < 100) {
+            sprintf(temp_path_str, "res/shiyuyuyi/shiyuyuyi_out00%d.bmp", i);
+            bmpGifList_node_set_pic_path(temp_bmp_node, temp_path_str);
+        }
+        else {
+            sprintf(temp_path_str, "res/shiyuyuyi/shiyuyuyi_out0%d.bmp", i);
+            bmpGifList_node_set_pic_path(temp_bmp_node, temp_path_str);
+        }
+
+        bmpGifList_load_pic(temp_bmp_node);
+        insert_bmpGifList_node(page->gif_shiyuyuyi_head_node, temp_bmp_node);
+    }
+    // page->gif_shiyuyuyi_head_node->image_width  = 242;
+    // page->gif_shiyuyuyi_head_node->image_height = 200;
 }
 
 void destroy_loginPage(struct loginPage* page)
@@ -196,6 +227,9 @@ void run_loginPage(struct loginPage* page, enum PAGE* page_order_addr)
             bmpButton_analyze_touch(page->fork_password_button, get_touch_status_data());
             bmpButton_draw(page->fork_password_button);
 
+
+            bmpGifList_update(page->gif_shiyuyuyi_head_node, delta_time);
+            bmpGifList_draw(page->gif_shiyuyuyi_head_node);
 
 
             for (cur_loop_numb = 0; cur_loop_numb <= 9; cur_loop_numb++) {

@@ -62,12 +62,8 @@ void insert_bmpGifList_node(struct bmpGifList* head_node, struct bmpGifList* ins
 
     insert_node->center_cord = head_node->center_cord;
 
-    head_node->image_width  = (head_node->image_width > insert_node->image_width)
-                                  ? head_node->image_width
-                                  : insert_node->image_width;
-    head_node->image_height = (head_node->image_height > insert_node->image_height)
-                                  ? head_node->image_height
-                                  : insert_node->image_height;
+    head_node->image_width  = insert_node->image_width;
+    head_node->image_height = insert_node->image_height;
 
     list_add_tail(&insert_node->list_node, &head_node->list_node);
 }
@@ -185,9 +181,15 @@ void bmpGifList_draw(struct bmpGifList* head_node)
         if (list_empty(&head_node->list_node)) {
             return;
         }
+        // printf("center cord:(%d,%d)  length(%d,%d)\n",
+        //        head_node->center_cord.x,
+        //        head_node->center_cord.y,
+        //        head_node->image_width,
+        //        head_node->image_height);
+
 
         painter_clear_range(head_node->center_cord.x - head_node->image_width / 2,
-                            head_node->center_cord.y - head_node->image_height,
+                            head_node->center_cord.y - head_node->image_height / 2,
                             head_node->image_width,
                             head_node->image_height);
 

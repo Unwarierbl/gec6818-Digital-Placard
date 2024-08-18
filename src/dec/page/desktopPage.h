@@ -26,7 +26,7 @@ struct desktopPage
 
     struct bmpTimeDisplayer* time_displayer;   // ok
 
-    struct bmpGifList* advert_head_node[3];   // ok
+    struct bmpGifList* advert_head_node[2];   // ok
 
     struct blankSlider* advert_slider;   // ok
 

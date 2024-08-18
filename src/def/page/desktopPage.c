@@ -78,7 +78,7 @@ void init_desktopPage(struct desktopPage* page)
     page->time_displayer->center_cord.y = 150;
 
 
-    for (int index = 0; index <= 2; index++) {
+    for (int index = 0; index <= 1; index++) {
         int max_loop_time;
         if (index == 0 || index == 2) {
             max_loop_time = 186;
@@ -239,13 +239,13 @@ void advert_slider_handle_slide(struct blankSlider* slider, touchStatusData touc
     case SLIDE_LEFT:
         advert_choice -= 1;
         if (advert_choice < 0) {
-            advert_choice = 2;
+            advert_choice = 1;
         }
         break;
 
     case SLIDE_RIGHT:
         advert_choice += 1;
-        if (advert_choice > 2) {
+        if (advert_choice > 1) {
             advert_choice = 0;
         }
         break;
@@ -257,5 +257,5 @@ void advert_slider_handle_slide(struct blankSlider* slider, touchStatusData touc
 
 void shutdown_button_action()
 {
-    *store_page_order_addr = NO_PAGE;
+    *store_page_order_addr = SHUTDOWN_PAGE;
 }

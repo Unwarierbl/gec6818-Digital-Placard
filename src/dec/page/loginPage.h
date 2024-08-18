@@ -7,6 +7,8 @@ struct jpegPicture;
 struct bmpButton;
 struct blankButton;
 
+struct bmpGifList;
+
 enum PAGE;
 
 struct loginPage
@@ -23,6 +25,8 @@ struct loginPage
     struct bmpButton* fork_password_button;   // ok
 
     struct bmpButton* number_button[10];   // ok
+
+    struct bmpGifList* gif_shiyuyuyi_head_node;
 };
 
 struct loginPage* request_loginPage_direct();   // ok
