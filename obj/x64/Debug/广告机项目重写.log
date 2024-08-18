@@ -5,6 +5,156 @@
   正在验证体系结构
   正在启动远程生成
   正在编译源:
+  accountInfo.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\accountInfo.c(17): warning : conversion to 'int' from 'size_t' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\accountInfo.c(22): warning : conversion to 'size_t' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\accountInfo.c(24): warning : conversion to 'int' from 'size_t' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\accountInfo.c(29): warning : conversion to 'size_t' from 'int' may change the sign of the result
+  frameBuffer.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(122): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(127): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(149): warning : conversion to 'float' from 'unsigned int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(164): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(164): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(164): warning : conversion to 'char' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(165): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(165): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(165): warning : conversion to 'char' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(166): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(166): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(166): warning : conversion to 'char' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\frameBuffer.c(170): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+  touchScreen.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\touchScreen.c(63): warning : conversion to 'float' from '__s32' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\touchScreen.c(63): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\touchScreen.c(66): warning : conversion to 'float' from '__s32' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\touchScreen.c(66): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\touchScreen.c(123): warning : negative integer implicitly converted to unsigned type
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\touchScreen.c(127): warning : negative integer implicitly converted to unsigned type
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\touchScreen.c(135): warning : negative integer implicitly converted to unsigned type
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\device\touchScreen.c(139): warning : negative integer implicitly converted to unsigned type
+  blankButton.c
+  blankSlider.c
+  bmpButton.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(69): warning : conversion to 'int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(81): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(85): warning : conversion to 'long int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(86): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(87): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(88): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(104): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(128): warning : conversion to 'int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(140): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(144): warning : conversion to 'long int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(145): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(146): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(147): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpButton.c(163): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+  bmpGifList.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpGifList.c(130): warning : conversion to 'int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpGifList.c(145): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpGifList.c(149): warning : conversion to 'long int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpGifList.c(150): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpGifList.c(151): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpGifList.c(152): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpGifList.c(169): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpGifList.c(223): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpGifList.c(226): warning : conversion to 'float' from 'int' may alter its value
+  bmpPicture.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpPicture.c(53): warning : conversion to 'int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpPicture.c(65): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpPicture.c(69): warning : conversion to 'long int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpPicture.c(70): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpPicture.c(71): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpPicture.c(72): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpPicture.c(88): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+  bmpSlidePicList.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(58): warning : unused variable 'whole_pic_numb'
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(91): warning : conversion to 'int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(106): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(110): warning : conversion to 'long int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(111): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(112): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(113): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpSlidePicList.c(130): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+  bmpTimeDisplayer.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(94): warning : conversion to 'int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(113): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(117): warning : conversion to 'long int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(118): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(119): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(120): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(136): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(165): warning : conversion to 'int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(187): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(191): warning : conversion to 'long int' from 'unsigned int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(192): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(193): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(194): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\bmpTimeDisplayer.c(210): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+  jpegPicture.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\jpegPicture.c(116): warning : conversion to 'int' from 'JDIMENSION' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\jpegPicture.c(117): warning : conversion to 'int' from 'JDIMENSION' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\jpegPicture.c(119): warning : conversion to 'JDIMENSION' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\jpegPicture.c(119): warning : conversion to 'int' from 'JDIMENSION' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\jpegPicture.c(123): warning : conversion to 'size_t' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\jpegPicture.c(124): warning : conversion to 'size_t' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\jpegPicture.c(135): warning : passing argument 2 of 'jpeg_read_scanlines' from incompatible pointer type
+D:\HelloWorld\c++\粤嵌\广告机项目重写\include\jpeglib.h(1042): message : expected 'JSAMPARRAY' but argument is of type 'char **'
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\module\jpegPicture.c(150): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
   desktopPage.c
+  loginPage.c
+  painter.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(200): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(200): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(201): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(201): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(204): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(204): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(208): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(208): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(209): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(209): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(212): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(212): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(276): warning : conversion to 'char' from 'double' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(279): warning : conversion to 'char' from 'double' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(282): warning : conversion to 'char' from 'double' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(285): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(318): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(319): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(323): warning : conversion to 'char' from 'unsigned int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(325): warning : conversion to 'char' from 'unsigned int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(327): warning : conversion to 'char' from 'unsigned int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(331): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(365): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(365): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(366): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(366): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(369): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(369): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(373): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(373): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(374): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(374): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(377): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(377): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(419): warning : conversion to 'char' from 'unsigned int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(431): warning : conversion to 'char' from 'unsigned int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(437): warning : conversion to 'char' from 'unsigned int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(445): warning : conversion to 'char' from 'double' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(448): warning : conversion to 'char' from 'double' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(451): warning : conversion to 'char' from 'double' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(454): warning : conversion to 'char' from 'double' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(457): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(486): warning : conversion to 'char' from 'unsigned int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(491): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(492): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(496): warning : conversion to 'char' from 'unsigned int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(498): warning : conversion to 'char' from 'unsigned int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(500): warning : conversion to 'char' from 'unsigned int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(502): warning : conversion to 'char' from 'unsigned int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\painter.c(506): warning : conversion to 'unsigned int' from 'int' may change the sign of the result
+  main.c
   正在链接对象
   广告机项目重写.vcxproj -> D:\HelloWorld\c++\粤嵌\广告机项目重写\bin\x64\Debug\DigitalBoard2.out

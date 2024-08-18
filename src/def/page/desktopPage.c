@@ -68,57 +68,59 @@ void init_desktopPage(struct desktopPage* page)
     page->time_displayer->center_cord.x = 100;
     page->time_displayer->center_cord.y = 150;
 
-    page->advert_head_node[0]                = request_bmpGifList_node_direct();
-    page->advert_head_node[0]->center_cord.x = -200;
-    page->advert_head_node[0]->center_cord.y = -100;
-    page->advert_head_node[0]->animFPS       = 1.0f / (FRAME_DELTA_TIME * 3);
-    for (int i = 0; i <= 186; i++) {
-        char temp_path_str[128];
-        memset(temp_path_str, 0, sizeof(temp_path_str));
 
-        struct bmpGifList* temp_bmp_node = request_bmpGifList_node_direct();
-        if (i < 10) {
-            sprintf(temp_path_str, "res/ad_1/ad_1__000%d_图层 %d.bmp", i, 187 - i);
-            bmpGifList_node_set_pic_path(temp_bmp_node, temp_path_str);
-        }
-        else if (i < 100) {
-            sprintf(temp_path_str, "res/ad_1/ad_1__00%d_图层 %d.bmp", i, 187 - i);
-            bmpGifList_node_set_pic_path(temp_bmp_node, temp_path_str);
+    for (int index = 0; index <= 2; index++) {
+        int max_loop_time;
+        if (index == 0 || index == 2) {
+            max_loop_time = 186;
         }
         else {
-            sprintf(temp_path_str, "res/ad_1/ad_1__0%d_图层 %d.bmp", i, 187 - i);
-            bmpGifList_node_set_pic_path(temp_bmp_node, temp_path_str);
+            max_loop_time = 187;
         }
 
-        bmpGifList_load_pic(temp_bmp_node);
-        insert_bmpGifList_node(page->advert_head_node[0], temp_bmp_node);
+        page->advert_head_node[index]                = request_bmpGifList_node_direct();
+        page->advert_head_node[index]->center_cord.x = -200;
+        page->advert_head_node[index]->center_cord.y = -100;
+        page->advert_head_node[index]->animFPS       = 1.0f / (FRAME_DELTA_TIME * 3);
+        for (int i = 0; i <= max_loop_time; i++) {
+            char temp_path_str[128];
+            memset(temp_path_str, 0, sizeof(temp_path_str));
+
+            struct bmpGifList* temp_bmp_node = request_bmpGifList_node_direct();
+            if (i < 10) {
+                sprintf(temp_path_str,
+                        "res/ad_%d/ad_%d__000%d_图层 %d.bmp",
+                        index + 1,
+                        index + 1,
+                        i,
+                        max_loop_time + 1 - i);
+                bmpGifList_node_set_pic_path(temp_bmp_node, temp_path_str);
+            }
+            else if (i < 100) {
+                sprintf(temp_path_str,
+                        "res/ad_%d/ad_%d__00%d_图层 %d.bmp",
+                        index + 1,
+                        index + 1,
+                        i,
+                        max_loop_time + 1 - i);
+                bmpGifList_node_set_pic_path(temp_bmp_node, temp_path_str);
+            }
+            else {
+                sprintf(temp_path_str,
+                        "res/ad_%d/ad_%d__0%d_图层 %d.bmp",
+                        index + 1,
+                        index + 1,
+                        i,
+                        max_loop_time + 1 - i);
+                bmpGifList_node_set_pic_path(temp_bmp_node, temp_path_str);
+            }
+
+            bmpGifList_load_pic(temp_bmp_node);
+            insert_bmpGifList_node(page->advert_head_node[index], temp_bmp_node);
+        }
     }
 
-    page->advert_head_node[1]                = request_bmpGifList_node_direct();
-    page->advert_head_node[1]->center_cord.x = -200;
-    page->advert_head_node[1]->center_cord.y = -100;
-    page->advert_head_node[1]->animFPS       = 1.0f / (FRAME_DELTA_TIME * 3);
-    for (int i = 0; i <= 187; i++) {
-        char temp_path_str[128];
-        memset(temp_path_str, 0, sizeof(temp_path_str));
 
-        struct bmpGifList* temp_bmp_node = request_bmpGifList_node_direct();
-        if (i < 10) {
-            sprintf(temp_path_str, "res/ad_2/ad_2__000%d_图层 %d.bmp", i, 188 - i);
-            bmpGifList_node_set_pic_path(temp_bmp_node, temp_path_str);
-        }
-        else if (i < 100) {
-            sprintf(temp_path_str, "res/ad_2/ad_2__00%d_图层 %d.bmp", i, 188 - i);
-            bmpGifList_node_set_pic_path(temp_bmp_node, temp_path_str);
-        }
-        else {
-            sprintf(temp_path_str, "res/ad_2/ad_2__0%d_图层 %d.bmp", i, 188 - i);
-            bmpGifList_node_set_pic_path(temp_bmp_node, temp_path_str);
-        }
-
-        bmpGifList_load_pic(temp_bmp_node);
-        insert_bmpGifList_node(page->advert_head_node[1], temp_bmp_node);
-    }
 
     page->advert_slider                = request_blankSlider_direct();
     page->advert_slider->center_cord.x = -200;
@@ -147,6 +149,20 @@ void init_desktopPage(struct desktopPage* page)
 
 void destroy_desktopPage(struct desktopPage* page)
 {
+    remove_jpegPic_direct(page->bg_jpeg_picture);
+
+    remove_bmpPicture_direct(page->bg_bmp_weather_1);
+    remove_bmpPicture_direct(page->bg_bmp_weather_2);
+
+    remove_bmpTimeDisplayer_direct(page->time_displayer);
+
+    remove_all_bmpGifList_node(page->advert_head_node[0]);
+    remove_all_bmpGifList_node(page->advert_head_node[1]);
+
+    remove_blankSlider_direct(page->advert_slider);
+
+    request_bmpSlidePicList_node_direct(page->slide_announce_head_node);
+
     free(page);
 }
 
@@ -208,17 +224,17 @@ void advert_slider_handle_slide(struct blankSlider* slider, touchStatusData touc
     case SLIDE_LEFT:
         advert_choice -= 1;
         if (advert_choice < 0) {
-            advert_choice = 1;
+            advert_choice = 2;
         }
         break;
 
     case SLIDE_RIGHT:
         advert_choice += 1;
-        if (advert_choice > 1) {
+        if (advert_choice > 2) {
             advert_choice = 0;
         }
         break;
-        ;
     default: break;
     }
+    // printf("advert choice=%d\n", advert_choice);
 }
