@@ -141,6 +141,11 @@ void set_point_RGB_color(int x, int y, unsigned int color)
 
 void set_point_ARGB_color(int x, int y, unsigned int color)
 {
+    if (x < screen_edge_left || x > screen_edge_right || y < screen_edge_up ||
+        y > screen_edge_down) {
+        return;
+    }
+
     float transp = color >> 8 * 3;
     transp       = transp / 255.0f;
 

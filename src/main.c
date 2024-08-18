@@ -10,11 +10,30 @@
 
 
 #include <stdlib.h>
-accountInfo_t* account_list_head;
+#include <time.h>
 
-int main(void)
+accountInfo_t* account_list_head;
+struct tm      system_initiate_time;
+
+
+int main(int argc, char** argv)
 {
     account_list_head = request_account_node_direct();
+
+    system_initiate_time.tm_year = 22;
+    system_initiate_time.tm_mon  = 8 - 1;
+    system_initiate_time.tm_mday = 18;
+
+    if (argc == 4) {
+        system_initiate_time.tm_hour = argv[1][0] + (argv[1][1] != '\0') ? argv[1][1] * 10 : 0;
+        system_initiate_time.tm_min  = argv[2][0] + (argv[2][1] != '\0') ? argv[2][1] * 10 : 0;
+        system_initiate_time.tm_sec == argv[3][0] + (argv[3][1] != '\0') ? argv[3][1] * 10 : 0;
+    }
+    else {
+        system_initiate_time.tm_hour = 10;
+        system_initiate_time.tm_min  = 10;
+        system_initiate_time.tm_sec  = 10;
+    }
 
     struct loginPage*   login_page;
     struct desktopPage* desktop_page;

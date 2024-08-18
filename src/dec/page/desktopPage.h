@@ -6,6 +6,7 @@
 struct jpegPicture;
 struct bmpButton;
 struct blankButton;
+struct bmpTimeDisplayer;
 
 enum PAGE;
 
@@ -13,9 +14,12 @@ enum PAGE;
 struct desktopPage
 {
     struct jpegPicture* bg_jpeg_picture;
+
+    struct bmpTimeDisplayer* time_displayer;
 };
 
 struct desktopPage* request_desktopPage_direct();
+// struct desktopPage* request_desktopPage();
 
 
 void init_desktopPage(struct desktopPage* page);
