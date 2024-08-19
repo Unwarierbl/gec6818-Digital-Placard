@@ -1,6 +1,7 @@
 ﻿#include "page/loginPage.h"
 #include "page/desktopPage.h"
 #include "page/shutdownPage.h"
+#include "page/startPage.h"
 
 #include "decTypes.h"
 
@@ -23,7 +24,7 @@ int main(int argc, char** argv)
 
     system_initiate_time.tm_year = 24;
     system_initiate_time.tm_mon  = 8 - 1;
-    system_initiate_time.tm_mday = 18;
+    system_initiate_time.tm_mday = 19;
 
     if (argc == 4) {
         system_initiate_time.tm_hour = (argv[1][1] == '\0')
@@ -51,34 +52,41 @@ int main(int argc, char** argv)
     struct loginPage*    login_page;
     struct desktopPage*  desktop_page;
     struct shutdownPage* shutdown_page;
+    struct startPage*    start_page;
 
-    enum PAGE cur_page = LOGIN_PAGE;
+    enum PAGE cur_page = START_PAGE;
 
     init_touchScreen_device();
     init_frameBuffer_device();
     init_painter();
 
-    desktop_page  = request_desktopPage_direct();
+    start_page    = request_startPage_direct();
     login_page    = request_loginPage_direct();
     shutdown_page = request_shutdownPage_direct();
+    desktop_page  = request_desktopPage_direct();
 
     init_loginPage(login_page);
-    init_desktopPage(desktop_page);
-    init_shutdownPage(shutdown_page);
+
 
 
     while (cur_page != NO_PAGE) {
         switch (cur_page) {
+        case START_PAGE:
+            init_startPage(start_page);
+            run_startPage(start_page, &cur_page);
+            break;
         case LOGIN_PAGE: run_loginPage(login_page, &cur_page); break;
-        case DESKTOP_PAGE: run_desktopPage(desktop_page, &cur_page); break;
+        case DESKTOP_PAGE:
+            init_desktopPage(desktop_page);
+            run_desktopPage(desktop_page, &cur_page);
+            break;
         case SHUTDOWN_PAGE:
-            printf("shut down page run\n");
+            init_shutdownPage(shutdown_page);
             run_shutdownPage(shutdown_page, &cur_page);
             break;
         default: cur_page = NO_PAGE; break;
         }
     }
-
     // destroy_loginPage(login_page);
     // destroy_desktopPage(desktop_page);
 }

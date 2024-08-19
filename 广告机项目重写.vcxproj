@@ -100,6 +100,7 @@
     <ClCompile Include="src\def\page\desktopPage.c" />
     <ClCompile Include="src\def\page\loginPage.c" />
     <ClCompile Include="src\def\page\shutdownPage.c" />
+    <ClCompile Include="src\def\page\startPage.c" />
     <ClCompile Include="src\def\painter.c" />
     <ClCompile Include="src\main.c" />
   </ItemGroup>
@@ -125,6 +126,7 @@
     <ClInclude Include="src\dec\page\desktopPage.h" />
     <ClInclude Include="src\dec\page\loginPage.h" />
     <ClInclude Include="src\dec\page\shutdownPage.h" />
+    <ClInclude Include="src\dec\page\startPage.h" />
     <ClInclude Include="src\dec\painter.h" />
   </ItemGroup>
   <ItemGroup>

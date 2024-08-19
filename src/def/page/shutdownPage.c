@@ -1,8 +1,11 @@
 #include "page/shutdownPage.h"
 
 #include "module/bmpGifList.h"
+#include "module/jpegPicture.h"
 #include "device/frameBuffer.h"
 #include "painter.h"
+
+
 
 #include <time.h>
 #include <sys/timeb.h>
@@ -45,9 +48,12 @@ void init_shutdownPage(struct shutdownPage* page)
 
 void run_shutdownPage(struct shutdownPage* page, enum PAGE* page_order_addr)
 {
+    // store_page_order_addr = page_order_addr;
+    // frameBuffer_set_bg_as_color(Black);
+    // frameBuffer_display_frame();
     store_page_order_addr = page_order_addr;
-    frameBuffer_set_bg_as_color(Black);
-    frameBuffer_display_frame();
+
+    frameBuffer_set_bg_as_cur_display();
 
     time_t start_time;
     time_t cur_time;
@@ -73,6 +79,10 @@ void run_shutdownPage(struct shutdownPage* page, enum PAGE* page_order_addr)
             cur_time      = time(NULL);
             cur_tick_time = difftime(cur_time, start_time);
             if (cur_tick_time > 4) {
+                sleep(1);
+                frameBuffer_set_bg_as_color(Black);
+                clear_screen();
+                frameBuffer_display_frame();
                 *store_page_order_addr = NO_PAGE;
             }
 

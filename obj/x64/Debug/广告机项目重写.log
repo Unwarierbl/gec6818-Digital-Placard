@@ -5,6 +5,11 @@
   正在验证体系结构
   正在启动远程生成
   正在编译源:
-  shutdownPage.c
+  startPage.c
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\page\startPage.c(89): warning : conversion to 'float' from 'time_t' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\page\startPage.c(92): warning : conversion to 'float' from 'int' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\page\startPage.c(92): warning : conversion to 'int' from 'float' may alter its value
+D:\HelloWorld\c++\粤嵌\广告机项目重写\src\def\page\startPage.c(70): warning : unused variable 'pre_offset'
+  main.c
   正在链接对象
   广告机项目重写.vcxproj -> D:\HelloWorld\c++\粤嵌\广告机项目重写\bin\x64\Debug\DigitalBoard2.out

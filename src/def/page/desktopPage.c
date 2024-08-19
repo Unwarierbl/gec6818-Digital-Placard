@@ -47,7 +47,8 @@ void init_desktopPage(struct desktopPage* page)
 {
     advert_choice = 0;
 
-    page->bg_jpeg_picture = request_jpegPic_direct();
+    page->bg_jpeg_picture                = request_jpegPic_direct();
+    page->bg_jpeg_picture->center_cord.y = 0;
     jpegPic_set_pic_path(page->bg_jpeg_picture, "res/bg_2.jpg");
     jpegPic_load_pic(page->bg_jpeg_picture);
 
